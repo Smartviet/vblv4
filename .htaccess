@@ -23,6 +23,10 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php?/$1 [L]
 
+	RewriteCond %{HTTP_HOST} admin.vuabanlev4.dev$
+	RewriteCond %{REQUEST_URI} !^/opencart/vuabanlev4
+	RewriteRule ^(.*)$ /opencart/$1 [L]
+
     #RewriteCond %{HTTP_REFERER} !^$
 	#RewriteCond %{HTTP_REFERER} !^http://www.vuabanle.vn/.*$ [NC]
 	#RewriteCond %{HTTP_REFERER} !^http://www.vuabanle.vn/.*$ [NC]
