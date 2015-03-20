@@ -19,9 +19,13 @@ class Products extends Ad_layout
         $this->load->view('layout', $this->_data);
     }
 
-    public function add()
+    public function form()
     {
-        $this->_data['main_content'] = $this->load->view('products/form', '', true);
+        $prefix = "Thêm ";
+
+        $this->_data['main_content'] = $this->load->view('products/form', array(
+            'prefix' => $prefix
+        ), true);
         $this->load->view('layout', $this->_data);
     }
 }
