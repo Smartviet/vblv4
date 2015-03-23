@@ -6,52 +6,52 @@ require_once 'application/controllers/layout.php';
  * @author Otcsoft.com - 2014
  */
 class Home extends Layout {
-	
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('home_model', 'home_model');
 		$this->load->model('athome_model', 'athome_model');
-		$this->load->model('utility_model', 'utility_model');		
+		$this->load->model('utility_model', 'utility_model');
 		//$this->load->model('config_model', 'config_model');
 		$this->load->library('email');
 
 		$this->load->library('user_agent');
 	}
-	
+
 	function Email(){
 		$this->load->library('email');
-		
+
 		$this->email->from('info@vuabanle.com', 'chinguyen.phpdev@gmail.com');
 		$this->email->to('it9xpro@gmail.com');
 		//$this->email->cc('another@another-example.com');
 		//$this->email->bcc('them@their-example.com');
-		
+
 		$this->email->subject('<h1>Email Test: 123123123</h1>');
 		$this->email->message('Testing the email class.');
-		
+
 		$this->email->send();
-		
+
 		echo $this->email->print_debugger();
 		/*
 		$guitoi="it9xpro@gmail.com";
 		$tieude="SinhViênIT.Net";
 		$noidung="<img src='http://sinhvienit.net/02.jpg'><br>Chào mừng bạn đến với SinhViênIT.net";
-		
+
 		if($this->mail_utf8($guitoi,$tieude,$noidung))
 		    echo "Gửi thành công";
 		else
 		    echo "Gửi thất bại";
 		*/
 	}
-	
+
 	function mail_utf8($to, $subject = '(Không có tiêu đề)', $message = '', $header = '') {
 		$header_ = 'MIME-Version: 1.0' . "\r\n" . 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		if(mail($to, "=?UTF-8?B?".base64_encode($subject).'?=', $message, $header_ . $header))
 			return true;
 		return false;
 	}
-	
+
 	public function index()
 	{
 
@@ -71,7 +71,7 @@ class Home extends Layout {
 		    ECHO "DESKTIOP";
 		}
 		*/
-		
+
 
 		$getCateSearchs = $this->home_model->getCateSearch();
 		$getAllCategoryTree = $this->home_model->getAllCategoryTree();
@@ -80,16 +80,16 @@ class Home extends Layout {
 		$getAllBrand = $this->home_model->getAllBrand();
 		$getAllatHome = $this->athome_model->getAll();
 		$getPopup  = $this->home_model->getPopup();
-		
-		
+
+
 		$configall = $this->config_model->getConfig();
 		$meta = array(
-			'title' => $configall->site_title, 
+			'title' => $configall->site_title,
 			'description' => $configall->site_describe,
 			'keywords' => $configall->site_keyword,
 		);
 
-		
+
 		$this->_data['main_content'] = $this->load->view('v3template/home_view', array(
 			'getCateSearchs' => $getCateSearchs,
 			'menus' => $getAllCategoryTree,
@@ -102,13 +102,13 @@ class Home extends Layout {
 		), true);
 		$this->load->view('v3template/layout_view', $this->_data);
 	}
-	
-	
+
+
 	public function uri()
 	{
 		$uri = $this->uri->segment(1);
 		$checkcategory = $this->category_model->checkKeypage($uri);
-		
+
 		if($checkcategory){
 			if($checkcategory->parentID == 0){
 				//var_dump($_GET);
@@ -128,19 +128,19 @@ class Home extends Layout {
 						$this->productdetail();
 					}else {
 						// echo "cap 3";
-						$this->productIndex();	
-					}	
+						$this->productIndex();
+					}
 				}
 			}
 		}else{
 			$checkproduct = $this->products_model->checkKeypage($uri);
 			if($checkproduct){
 				$this->productdetail();
-			}	
+			}
 		}
-		
+
 	}
-	
+
 	public function category()
 	{
 		$uri = $this->uri->segment(1);
@@ -160,16 +160,16 @@ class Home extends Layout {
 		$page = $this->uri->segment(2);
 		$config['per_page'] = 12;
 		$getProdUsingCates = $this->products_model->getProdUsingCates($getCategDetail->catID,$config['per_page'] , $page);
-		
-		
+
+
 		$this->breadcrumbcomponent->add('Trang chủ', base_url());
 		$this->breadcrumbcomponent->add($getCategDetail->catName, base_url());
 		$bradcrumbs = $this->breadcrumbcomponent->output();
 
-		
+
 		$this->load->library('pagination');
 
-		
+
 
     	$config['base_url'] = base_url().'/'.$uri;
 		$config['total_rows'] = $getProdUsingCates['total_record'];
@@ -192,8 +192,8 @@ class Home extends Layout {
 		), true);
 		$this->load->view('v3template/layout_view', $this->_data);
 	}
-	
-	
+
+
 	public function productIndex()
 	{
 		$uri = $this->uri->segment(1);
@@ -205,10 +205,10 @@ class Home extends Layout {
 		}else{
 			$allurl = $urlBrand = $urlPrice = $urlorder =  $_SERVER['REQUEST_URI'].'?';
 		}
-		
-		// TH2 : THUONG HIEU 
+
+		// TH2 : THUONG HIEU
 		if(!empty($_GET['brand']) && $_GET['brand'] != 0){
-			
+
 			$urlPrice = $allurl.'&';
 			$urlorder = $allurl.'&';
 			if(!empty($_GET['order'])){
@@ -216,11 +216,11 @@ class Home extends Layout {
 				$urlorder = str_replace($urlordercut, '', $allurl);
 			}
 			$arraySearch['brand'] = $_GET['brand'];
-			
+
 		}elseif (@$_GET['brand'] == 0){
 			$urlBrand = str_replace('brand=0', '', $urlBrand);
 		}
-		
+
 		// TH2 : THUONG HIEU
 		if(!empty($_GET['lefprice']) && $_GET['lefprice'] != 0){
 			$urlBrand = $allurl.'&';
@@ -232,7 +232,7 @@ class Home extends Layout {
 			$arraySearch['lefprice'] = $_GET['lefprice'];
 			$arraySearch['rightLabel'] = $_GET['rightLabel'];
 		}
-		
+
 		// TH3 : GIA
 		if(isset($_GET['order'])){
 			$urlPrice = $allurl.'&';
@@ -250,7 +250,7 @@ class Home extends Layout {
 
 		$getCateSearchs = $this->home_model->getCateSearch();
 		$getAllCategoryTree = $this->home_model->getAllCategoryTree();
-		
+
 		$getCategDetail = $this->category_model->getItemDetail($uri);
 		$countCate = $this->category_model->countCate($getCategDetail->catID);
 		$breadcrumb = array();
@@ -268,46 +268,46 @@ class Home extends Layout {
 			$level =  3;
 			$getCateUri = $this->category_model->getCateUri($getCategDetail->catID, $cap = 3);
 		}
-		
-		
+
+
 		$getBrandUsingCates = $this->brand_model->getBrandUsingCate($getCategDetail->catID);
-		
-		
+
+
 		$config['per_page'] = 16;
 		$page = 0;
-		
+
 		if($this->uri->segment(2) && $this->uri->segment(2) != null ){
 			$page = $this->uri->segment(2);
 		}else{
 			$page = 0;
 		}
-		
-		
-		
+
+
+
 		$getAllProducts = $this->products_model->getAllProducts($arraySearch,$config['per_page'], $page, $getCategDetail->catID);
 		$this->load->library('pagination');
 		$config['base_url'] = base_url().'/'.$uri;
 		$config['total_rows'] = $getAllProducts['total_record'];
-		
-		
+
+
 		if(@$arraySearch['brand'] !='' || @$arraySearch['order'] != '' || @$arraySearch['lefprice'] != ''  ){
 			$config['first_url'] = $config['base_url']."?brand=".@$arraySearch['brand'].'&lefprice='.@$arraySearch['lefprice'].'&rightLabel='. @$arraySearch['rightLabel'].'&order='.@$arraySearch['order'];
 			$this->pagination->suffix = "?brand=".@$arraySearch['brand'].'&lefprice='.@$arraySearch['lefprice'].'&rightLabel='. @$arraySearch['rightLabel'].'&order='.@$arraySearch['order'];
 		}
-		
+
 		$config['uri_segment'] = 2;
 		$config['num_links'] = 3;
 		$config['use_page_numbers'] = FALSE;
-		
+
 		$this->pagination->initialize($config);
 		$data["paging"] = $this->pagination->create_links();
-		
+
 		$meta = array(
 			'title' => $getCategDetail->catName,
 			'description' => $getCategDetail->metaTitle,
 			'keywords' => $getCategDetail->metaDes,
 		);
-		
+
 		if($level == 2){
 			$this->breadcrumbcomponent->add('Trang chủ', base_url());
 			$this->breadcrumbcomponent->add($getCategDetail->catName, base_url());
@@ -317,15 +317,15 @@ class Home extends Layout {
 			$this->breadcrumbcomponent->add($getCategDetail->catName, base_url());
 		}
 		$bradcrumbs = $this->breadcrumbcomponent->output();
-		
+
 		//var_dump($bradcrumbs);
-		
+
 		if (isset($_GET['gclid']) != ''){
 			$urlBrand = $urlBrand.'&';
 		}
-		
+
 		//var_dump($urlBrand);
-				
+
 		$this->_data['main_content'] = $this->load->view('v3template/Products_view', array(
 			'getCateSearchs' => $getCateSearchs,
 			'menus' => $getAllCategoryTree,
@@ -343,9 +343,14 @@ class Home extends Layout {
 		), true);
 		$this->load->view('v3template/layout_view', $this->_data);
 	}
-	
+
+	/*
+	 * function detail products
+	 */
 	public function productdetail()
 	{
+        $this->output->enable_profiler(TRUE);
+
 		$agent = $_SERVER['HTTP_USER_AGENT'];
 		$addr = $_SERVER['REMOTE_ADDR'];
 		$getUrl = $_SERVER['REDIRECT_QUERY_STRING'];
@@ -353,15 +358,15 @@ class Home extends Layout {
 		$explodeUrl = explode(".", $strGetUrl);
 		if(@$explodeUrl[1]=='html'){
 			$uriproduct = $this->uri->segment(1);
-			
+
 			$productdetail = $this->products_model->getProductDetail($uriproduct);
-			
+
 			//var_dump($productdetail);
-			
+
 			$categorytrees = $this->category_model->getAllCategoryTree($productdetail->catID);
-			
+
 			$view =  $this->home_model->viewproduct($productdetail->view + 1, $productdetail->productID);
-			
+
 			// kiem tra xem san pham va ip nguoi dung da ton tai chua
 			$getIdorder = $this->home_model->getIdorder($productdetail->productID, $addr);
 			$getAllorder = $this->home_model->getAllorder($agent, $addr);
@@ -386,54 +391,35 @@ class Home extends Layout {
 	            'keywords' => $productdetail->metaDes,
 	        );
 	        $getCateSearchs = $this->home_model->getCateSearch();
-	        
+
 	        @$getAllCategoryTree = $this->home_model->getAllCategoryTree();
-	        
+
 	        if (isset($categorytrees[0]['CatChild'][0]['CatChild'][0]['catName'])){
-	        	
+
 	        	$this->breadcrumbcomponent->add('Trang chủ', base_url());
 	        	$this->breadcrumbcomponent->add($categorytrees[0]['CatChild'][0]['CatChild'][0]['catName'], base_url($categorytrees[0]['CatChild'][0]['CatChild'][0]['keypage']));
 	        	$this->breadcrumbcomponent->add($categorytrees[0]['CatChild'][0]['catName'], base_url($categorytrees[0]['CatChild'][0]['keypage']));
 	        	$this->breadcrumbcomponent->add($categorytrees[0]['catName'], base_url($categorytrees[0]['keypage']));
 	        	$this->breadcrumbcomponent->add($productdetail->productName, base_url());
-	        	
+
 	        }elseif (isset($categorytrees[0]['CatChild'][0]['catName'])) {
-	        	
+
 	        	$this->breadcrumbcomponent->add('Trang chủ', base_url());
 	        	$this->breadcrumbcomponent->add($categorytrees[0]['CatChild'][0]['catName'], base_url($categorytrees[0]['CatChild'][0]['keypage']));
 	        	$this->breadcrumbcomponent->add($categorytrees[0]['catName'], base_url($categorytrees[0]['keypage']));
 	        	$this->breadcrumbcomponent->add($productdetail->productName, base_url());
-	        	
+
 	        }else {
 	        	$this->breadcrumbcomponent->add('Trang chủ', base_url());
 	        	$this->breadcrumbcomponent->add($categorytrees[0]['catName'], base_url($categorytrees[0]['keypage']));
 	        	$this->breadcrumbcomponent->add($productdetail->productName, base_url());
 	        }
-	        
-	        /*
-	        $countCate = count($categorytrees);
-	        if($countCate == 1){
-	        	$this->breadcrumbcomponent->add('Trang chủ', base_url());
-	        	$this->breadcrumbcomponent->add($categorytrees[0][0]['catName'], base_url($categorytrees[0][0]['keypage']));
-	        	$this->breadcrumbcomponent->add($productdetail->productName, base_url());
-	        }elseif ($countCate == 2){
-	        	$this->breadcrumbcomponent->add('Trang chủ', base_url());
-	        	$this->breadcrumbcomponent->add($categorytrees[1][0]['catName'], base_url($categorytrees[1][0]['keypage']));
-	        	$this->breadcrumbcomponent->add($categorytrees[0][0]['catName'], base_url($categorytrees[0][0]['keypage']));
-	        	$this->breadcrumbcomponent->add($productdetail->productName, base_url());
-	        }else{
-	        	$this->breadcrumbcomponent->add('Trang chủ', base_url());
-	        	$this->breadcrumbcomponent->add($categorytrees[2][0]['catName'], base_url($categorytrees[2][0]['keypage']));
-	        	$this->breadcrumbcomponent->add($categorytrees[1][0]['catName'], base_url($categorytrees[1][0]['keypage']));
-	        	$this->breadcrumbcomponent->add($categorytrees[0][0]['catName'], base_url($categorytrees[0][0]['keypage']));
-	        	$this->breadcrumbcomponent->add($productdetail->productName, base_url());
-	        }
-	        */
+
 	        $bradcrumbs = $this->breadcrumbcomponent->output();
-	        
-	        
+
+
 	        $getRandProduct = $this->products_model->getRandProductlq($productdetail->catID);
-			$this->_data['main_content'] = $this->load->view('v3template/Product_detail', array(
+			$this->_data['main_content'] = $this->load->view('v4template/detail_product', array(
 				'getCateSearchs' => $getCateSearchs,
 				'menus' => $getAllCategoryTree,
 			    'meta' => $meta,
@@ -447,12 +433,14 @@ class Home extends Layout {
 				'getRandProducts' => $getRandProduct,
 				'bradcrumbs' => $bradcrumbs,
 			), true);
-			$this->load->view('v3template/layout_view', $this->_data);
+			$this->load->view('v4template/layout_view', $this->_data);
 		}
 		else {
 			redirect(base_url(),'refresh');
 		}
-		
+
+
+
 	}
 	// chinh sach
 	public function policy()
@@ -464,7 +452,7 @@ class Home extends Layout {
             'title' => $policyDetail->newsTitle,
             'description' => $policyDetail->metaTitle,
             'keywords' => $policyDetail->metaDes,
-        );	
+        );
         $getCateSearchs = $this->home_model->getCateSearch();
         $getAllCategoryTree = $this->home_model->getAllCategoryTree();
         $tuyenDung5 = $this->home_model->tuyenDung5();
@@ -482,7 +470,7 @@ class Home extends Layout {
 		), true);
 		$this->load->view('v3template/layout_view', $this->_data);
 	}
-	
+
 	//Gửi nhận xét
 	public function comment()
 	{
@@ -517,68 +505,68 @@ class Home extends Layout {
 					  </script>";
 		}
 	}
-	
-    
-    
+
+
+
     public function menu()
     {
         echo "<meta charset=utf-8>";
         $menu = array();
         $getParentID0s = $this->category_model->getAllCateParent0();
-       
+
         foreach($getParentID0s as $getParentID0)
         {
             $menu['cap1'] = $getParentID0['catName'];
-            $getAllCateParents = $this->category_model->getAllCateParent($getParentID0['catID']); 
+            $getAllCateParents = $this->category_model->getAllCateParent($getParentID0['catID']);
             foreach($getAllCateParents as $getAllCateParent){
-                $menu[] = '--'.$getAllCateParent['catName'];  
+                $menu[] = '--'.$getAllCateParent['catName'];
                 $getAllCateParents1s = $this->category_model->getAllCateParent($getAllCateParent['catID']);
                 foreach($getAllCateParents1s as $getAllCateParents1){
-                    $menu[] = '----'.$getAllCateParents1['catName'];  
+                    $menu[] = '----'.$getAllCateParents1['catName'];
                 }
             }
         }
-        
+
         $this->load->view('menu_view', array(
                 'getParentID0s' => $getParentID0s,
             )
         );
-        
+
     }
 
     function padding()
     {
-    
+
     	  // URI
         $uriproduct = $this->uri->segment(1);
         $seo_name= str_replace("-qc", "", $uriproduct);
         $getpadding=$this->base_model->get_detail('tbl_padding','url',$seo_name);
         $value= $getpadding['id'];
         $uri2 = $this->uri->segment(2);
-       
-        
-        
+
+
+
         $categoryTree =  explode("-pd-",$uriproduct);
-        
+
         // lay ra toan bo category con  trong category cha
-        $getCategoryUsingParent = $this->category_model->getAllCateParent0(); 
-        
+        $getCategoryUsingParent = $this->category_model->getAllCateParent0();
+
         // lay ra toan bo thuong hieu
         $getAllBrands = $this->brand_model->getAllBrand();
-        
+
         // lay ra gia cho san pham
         $getMinMaxPrice = $this->products_model->getMinMaxPrice();
-        
+
         // lay ra 4 san pham ngau nhien
-        $listProductRandom = $this->products_model->getProductRandom(); 
-        
+        $listProductRandom = $this->products_model->getProductRandom();
+
         /*
          * phan trang
          */
         $config['per_page'] = 16;
-        
+
         //?price_from=2319385&price_to=160800000
-        
+
         $arraySearch = array();
         $arraySearch['price_from'] = '';
         $arraySearch['price_to'] = '';
@@ -587,18 +575,18 @@ class Home extends Layout {
             $arraySearch['price_from'] =   $this->input->get('price_from');
             $arraySearch['price_to'] =   $this->input->get('price_to');
         }
-        
+
         if($this->input->post()){
             $arraySearch['keysearch'] = $this->input->post('keysearch');
         }else{
             $arraySearch['keysearch']  = $this->input->get('keysearch');
         }
-        
-        
+
+
         if(isset($uri2)){
-            $arraySearch['subsearch'] = $uri2; 
+            $arraySearch['subsearch'] = $uri2;
         }
-    
+
         $getUrl = $_SERVER['REDIRECT_QUERY_STRING'];
         $strGetUrl = substr($getUrl, 1);
         $explodeUrl = explode("-pd-", $strGetUrl);
@@ -630,7 +618,7 @@ class Home extends Layout {
         if($arraySearch['price_from'] !='' || $arraySearch['keysearch'] != '' ){
             $config['first_url'] = $config['base_url']."?price_from=".$arraySearch['price_from'].'&price_to='.$arraySearch['price_to'].'&keysearch='. $arraySearch['keysearch'];
             $this->pagination->suffix = "?price_from=".$arraySearch['price_from'].'&price_to='.$arraySearch['price_to'].'&keysearch='. $arraySearch['keysearch'];
-        } 
+        }
         $config['use_page_numbers'] = false;
         $config['uri_segment'] = 2;
         $config['num_links'] = 1;
@@ -640,7 +628,7 @@ class Home extends Layout {
         //echo $uriproduct;
         $config = $this->utility_model->whereOneField('tbl_config', 'config_id', 1);
         $getContent = $this->utility_model->getAllASC('tbl_about', 'status', 1, 'stt');
-        
+
         $configall = $this->config_model->getConfig();
         $meta = array(
             'title' => 'Vua bán lẻ | Tìm kiếm ',
@@ -661,10 +649,10 @@ class Home extends Layout {
             'uriproduct' => $categoryTree,
             'meta' => $meta
         ));
-        
+
     }
-    
-    
+
+
     public function bigsale()
     {
     	$getCateSearchs = $this->home_model->getCateSearch();
@@ -672,14 +660,14 @@ class Home extends Layout {
 		$configall = $this->config_model->getConfig();
 		$bigsale = $this->products_model->getBigsale();
 		//var_dump($bigsale);
-		
+
 		$meta = array(
-			'title' => $configall->site_title, 
+			'title' => $configall->site_title,
 			'description' => $configall->site_describe,
 			'keywords' => $configall->site_keyword,
 		);
 
-		
+
 		$this->_data['main_content'] = $this->load->view('v3template/bigsale_view', array(
 			'getCateSearchs' => $getCateSearchs,
 			'menus' => $getAllCategoryTree,
@@ -688,20 +676,20 @@ class Home extends Layout {
 		), true);
 		$this->load->view('v3template/layout_view', $this->_data);
     }
-    
-    
-    
+
+
+
     public function checkEmail()
-    {    	
+    {
     	$checkmail = $this->home_model->checkisemail($this->input->post('email_rg'));
-    	
+
     	if($checkmail == true){
     		echo "true";
     	}else {
     		echo "false";
-    	}    		
+    	}
     }
-    
+
     public function checkUsername()
     {
     	$checkmail = $this->home_model->checkisUsername($this->input->post('username'));
@@ -711,7 +699,7 @@ class Home extends Layout {
     		echo "false";
     	}
     }
-    
+
     // login
     public function checkPass()
     {
@@ -722,7 +710,7 @@ class Home extends Layout {
     		echo "false";
     	}
     }
-    
+
     public function checkUser()
     {
     	$checkmail = $this->home_model->checkUser($this->input->post('l_username'));
@@ -733,9 +721,9 @@ class Home extends Layout {
     		echo "false";
     	}
     }
-    
-    
-    
+
+
+
     public function addMail()
     {
     	var_dump($_POST);
@@ -743,6 +731,6 @@ class Home extends Layout {
     	//$addMail = $this->home_model->addMail();
     }
 
-	
+
 }
 

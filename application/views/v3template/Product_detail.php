@@ -61,7 +61,7 @@
 				<div class="code">
 					<span>Mã sản phẩm: <span class="color"><?php if($productdetail->productCode != ""){ echo  @$productdetail->productCode; } ?></span><span class="liwa">|
 					</span><span> Lượt xem: <span class="color"><?php if($productdetail->view != ""){ echo  @$productdetail->view; } ?></span>
-					<span class="liwa">|</span> Cập nhật: <span class="color">19/09/2014</span></span>
+					<span class="liwa">|</span> Cập nhật: <span class="color"><?php $productdetail->updated ?></span></span>
 				</div>
 
 				<div class="short-description">
