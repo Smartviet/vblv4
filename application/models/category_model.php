@@ -5,6 +5,103 @@
  */
 class Category_model extends CI_Model
 {
+
+    // V4
+    /**
+     * @param int $item
+     * @param int $level
+     * @return array
+     * @description lay ra category 2 cap
+     */
+    public function getCategory2level($item = 0, $level = 0)
+    {
+        $level++;
+        $return = array();
+        $sql = "SELECT catid, catName, parentID, catImage, keypage FROM tbl_categories WHERE parentID = $item ORDER BY catid";
+        $query = $this->db->query($sql);
+
+
+        $rows = $query->result_array();
+        foreach ($rows as $key => $item) {
+            unset($rows[$key]);
+            $item['level'] = $level;
+            $item['CatChild'] = $this->getCategory2level($item['catid'], $level);
+            $return[] =  $item;
+        }
+        return $return;
+    }
+
+    public function getSubMenu($id)
+    {
+        $sql = "SELECT catid, catName, parentID, catImage, keypage FROM tbl_categories WHERE parentID = $id AND athome=1 ORDER BY catid";
+        $query = $this->db->query($sql);
+        $rows = $query->result_array();
+        foreach ($rows as $key => $item) {
+            unset($rows[$key]);
+            $item['subProducts'] = $this->get4products($item['catid']);
+            $return[] =  $item;
+        }
+        return $return;
+    }
+
+    public function get4products($id)
+    {
+        $sql = "SELECT SQL_CALC_FOUND_ROWS
+		            p.productID,
+					p.catID,
+					p.anhthume,
+					p.productImage,
+					p.gia,
+					p.giamgia,
+					p.giagiam,
+					p.seo_name,
+					p.productName,
+					p.status,
+					p.tinhtranghang,
+					p.ghod,
+					p.view
+					, ct.catName AS cateName
+				FROM
+					(`tbl_product` p)
+				LEFT JOIN `tbl_categories` ct ON `p`.`catID` = `ct`.`catID`
+				LEFT JOIN `tbl_categories` ct1 ON `ct1`.`catID` = `ct`.`parentID`
+				WHERE
+					(
+						p.catID = $id
+						OR ct.parentID = $id
+						OR ct1.parentID = $id
+					)
+                AND p.status = 1 AND p.adstatus = 1
+				ORDER BY
+					`productID` DESC LIMIT 4";
+        $query = $this->db->query($sql);
+        if($query) {
+            return $query->result_array();
+        }else {
+            return false;
+        }
+    }
+
+
+
+
+    /*
+     * lay ra toan bo chuyen muc con duoc athoem la 1 va 4 san pham thuoc athome do
+     */
+    public function setSubCatAndProduct($id)
+    {
+        $sql = "SELECT catid, catName, parentID, catImage, keypage FROM tbl_categories WHERE parentID = $id ORDER BY catid";
+        $query = $this->db->query($sql);
+        if($query->num_rows() > 0){
+            return $query->result_array();
+            $query->free_result();
+        }else {
+            return FALSE;
+        }
+    }
+
+
+    /*********************************************END V4**********************************************/
 	
 	/**
 	 * lay du lieu trong menu roi do ra mang

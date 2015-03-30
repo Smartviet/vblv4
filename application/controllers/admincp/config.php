@@ -41,6 +41,7 @@ class Config extends Ad_layout
 			'site_keyword' => $this->input->post('site_keyword'),
 			'site_contactcontent' => $this->input->post('site_contactcontent'),
 			'site_footer' => $this->input->post('site_footer'),
+            'code' => $this->input->post('code'),
 		);
 		$updated = $this->utility_model->updated('config_id', 1, $this->table, $data);
 		if($updated){

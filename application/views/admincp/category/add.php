@@ -206,7 +206,7 @@ $(document).ready(function(){
 							</div>
 							
                             
-                            <div class="span1">Hiển thị ở trnag chủ:</div>
+                            <div class="span1">Hiển thị ở trang chuyên mục:</div>
 							<div class="span3">
 								<label><input type="radio" name="athome" value="1" />Có</label>
 								<label><input type="radio" name="athome" value="2" checked />Không</label>

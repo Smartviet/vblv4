@@ -1,7 +1,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $("#contact").validate({
-        errorElement: "span", // Định dạng cho thẻ HTML hiện thông báo lỗi
+        errorElement: "span" // Định dạng cho thẻ HTML hiện thông báo lỗi
     });
 }); 
 </script>
@@ -15,6 +15,7 @@ $(document).ready(function(){
 	</div>
 	<div class="workplace">
 		<div class="row-fluid">
+
 			<div class="span12">
 				<div class="head">
 					<div class="isw-documents"></div>
@@ -146,6 +147,17 @@ $(document).ready(function(){
 							</div>
 							<div class="clear"></div>
 						</div>
+
+                        <div class="row-form">
+                            <div class="span3">CODE</div>
+                            <div class="span9">
+								<textarea class="" name="code"
+                                          placeholder="Meta Description..." cols="250"><?= $config->code; ?></textarea>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+
 						<div class="row-form">
 							<div class="span9">
 								<p>

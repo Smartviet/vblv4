@@ -1,4 +1,15 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+
+// vuabanlev4
+$route['qlvuabanle'] = "dashboard/dashboard/index/$1";
+$route['qlvuabanle/([a-zA-Z_-]+)'] = "dashboard/$1";
+
+//http://vuabanle.dev/qlvuabanle/ad_products/index
+$route['qlvuabanle/([a-zA-Z_-]+)/(:any)'] = "dashboard/$1/$2";
+
+
+
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING

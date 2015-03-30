@@ -391,7 +391,7 @@ $(document).ready(function(){
 								<label><input type="radio" name="status" value="1" <?php if($cateDetail->status == "1"){ echo "checked";}?> ></input>Hiện</label>
 								<label><input type="radio" name="status" value="2" <?php if($cateDetail->status == "2"){ echo "checked";}?> ></input>Ẩn</label>
 							</div>
-						    <div class="span1">Hiển thị ở trnag chủ:</div>
+						    <div class="span1">Hiển thị ở trang chuyên mục:</div>
 							<div class="span3">
 								<label><input type="radio" name="athome" value="1" <?php if($cateDetail->athome == "1"){ echo "checked";}?>   />Có</label>
 								<label><input type="radio" name="athome" value="2" <?php if($cateDetail->athome == "2"){ echo "checked";}?>  />Không</label>

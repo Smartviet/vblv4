@@ -60,8 +60,39 @@
 	<!-- Lazy load image -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/2015/js/BttrLazyLoading/bttrlazyloading.min.css'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/2015/js/BttrLazyLoading/animate.min.css');?>" />
-	
-	<script src="<?php echo base_url('assets/2015/js/BttrLazyLoading/jquery.bttrlazyloading.min.js');?>"></script>	
+
+	<script src="<?php echo base_url('assets/2015/js/BttrLazyLoading/jquery.bttrlazyloading.min.js');?>"></script>
+
+    <script src="<?php echo base_url('assets/2015/js/jquery.lazyload.js');?>"></script>
+
+    <!---
+    <script type="text/javascript">
+        $(function() {
+            $("img.lazy").lazyload({
+                event : "sporty",
+                effect : "fadeIn",
+                // threshold : 200,
+                placeholder : "<?php echo base_url('assets/2015/js/loading.gif');?>"
+            });
+        });
+
+        $(window).bind("load", function() {
+            var timeout = setTimeout(function() {
+                $("img.lazy").trigger("sporty")
+            }, 5000);
+        });
+    </script>
+    placeholder : "<?php echo base_url('assets/2015/js/loading.gif');?>"
+    -->
+
+
+
+    <script type="text/javascript">
+        $(function(){
+            $("img.lazy").lazyload();
+        });
+
+    </script>
 
     <!-- // HOME -->
     <?php if($this->uri->segment(1) && $this->uri->segment(1) != null){ ?>
@@ -262,33 +293,8 @@
 </head>
 
 <body>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<?php echo $config->code ?>
 
-  ga('create', 'UA-41788948-1', 'auto');
-  ga('send', 'pageview');
-
-</script>   
-
-<script>(function() {
-  var _fbq = window._fbq || (window._fbq = []);
-  if (!_fbq.loaded) {
-    var fbds = document.createElement('script');
-    fbds.async = true;
-    fbds.src = '//connect.facebook.net/en_US/fbds.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(fbds, s);
-    _fbq.loaded = true;
-  }
-  _fbq.push(['addPixelId', '251627638370537']);
-})();
-window._fbq = window._fbq || [];
-window._fbq.push(['track', 'PixelInitialized', {}]);
-</script>
-<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=251627638370537&amp;ev=PixelInitialized" /></noscript>
 
 <!-- ORDER -->
 <script type="text/javascript" language="JavaScript">
@@ -305,42 +311,7 @@ window._fbq.push(['track', 'PixelInitialized', {}]);
         });
     });
 </script>
-<div style="height: 0px;">
-    <!-- Google Code dành cho Thẻ tiếp thị lại -->
-    <!--------------------------------------------------
-    Không thể liên kết thẻ tiếp thị lại với thông tin nhận dạng cá nhân hay đặt thẻ tiếp thị lại trên các trang có liên quan đến danh mục nhạy cảm. Xem thêm thông tin và hướng dẫn về cách thiết lập thẻ trên: http://google.com/ads/remarketingsetup
-    --------------------------------------------------->
-    <script type="text/javascript">
-    /* <![CDATA[ */
-    var google_conversion_id = 988433195;
-    var google_custom_params = window.google_tag_params;
-    var google_remarketing_only = true;
-    /* ]]> */
-    </script>
-    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-    </script>
-    <noscript>
-    <div style="display:inline;">
-    <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/988433195/?value=0&amp;guid=ON&amp;script=0"/>
-    </div>
-    </noscript>
-   <script>(function() {
-  var _fbq = window._fbq || (window._fbq = []);
-  if (!_fbq.loaded) {
-    var fbds = document.createElement('script');
-    fbds.async = true;
-    fbds.src = '//connect.facebook.net/en_US/fbds.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(fbds, s);
-    _fbq.loaded = true;
-  }
-  _fbq.push(['addPixelId', '1419608048324756']);
-})();
-window._fbq = window._fbq || [];
-window._fbq.push(['track', 'PixelInitialized', {}]);
-</script>
-<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=1419608048324756&amp;ev=PixelInitialized" /></noscript>
-</div>
+
  <script>
 $(function() {
 var availableTags = [

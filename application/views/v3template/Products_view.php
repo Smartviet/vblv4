@@ -11,7 +11,7 @@
 <section id="main-page">
     <aside id="filter">
      	<div class="type-filter all-product">
-     		<?php if ((isset($_GET['brand']) && $_GET['brand'] != 0) || (isset($_GET['lefprice']) && $_GET['lefprice'] != '') || (isset($_GET['order']) && $_GET['order'] != '')  ){ ?> 
+     		<?php if ((isset($_GET['brand']) && $_GET['brand'] != 0) || (isset($_GET['lefprice']) && $_GET['lefprice'] != '') || (isset($_GET['order']) && $_GET['order'] != '')  ){ ?>
             <h6 class="title-filter">Mua theo</h6>
             <?php }?>
             <div class="content-filter">
@@ -26,7 +26,7 @@
 	                    <?php $brand = ''; endforeach;?>
 	                </ul>
                 <?php }?>
-                
+
                 <?php if (isset($_GET['lefprice']) && $_GET['lefprice'] != 0){ ?>
                 	 <ul id="root_tree"  class="filter-group">
 	                    <?php echo  Utility_model::price_format($_GET['lefprice']).' <span style="color:#ff0000;">đến</span> '. Utility_model::price_format($_GET['rightLabel']).' vnđ'; ?>
@@ -34,8 +34,8 @@
 							echo '<a href='.$delprice.'>Xóa</a>'; ?>
 	                </ul>
                 <?php $price = ''; }?>
-                
-                
+
+
                 <?php
                 if (isset($_GET['order'])){
                 	if($_GET['order'] == 'asc'){ ?>
@@ -60,7 +60,7 @@
                         </ul>
                     <?php
                     }
-                } 
+                }
                 ?>
             </div>
         </div><!--End Type Filter-->
@@ -101,7 +101,7 @@
         </div><!--End Type Filter-->
         <?php }?>
         <?php if (isset($price)){
-        	
+
         }else { ?>
         <div class="type-filter filter-price">
             <h6 class="title-filter">Giá sản phẩm</h6>
@@ -121,18 +121,18 @@
                     <div class="index">
                         <div class="rightLabel" /></div><span>VNĐ</span>
                     </div>
-                     <!-- 
+                     <!--
                     <input type="hidden" name="lefprice" id="lefprice">
                     <input type="hidden" name="rightprice" id="rightprice">
                       -->
-                     
+
 <!--                     <input class="filter-price-button" type="submit" value=""> -->
                     <a class="filter-price-button" href="" id="lefprice">a</a>
                 </div>
 
                 <script>
                     $('.nstSlider').nstSlider({
-                    	
+
                         "rounding": {
                             "100": "1000",
                             "1000": "10000",
@@ -171,7 +171,7 @@
 	            <?php }?>
                 </h1>
                 <?php if (isset($order)){
-                	
+
                 }else { ?>
                 <div class="filter-main-content">
                     <h5>Sắp xếp theo:</h5>
@@ -208,7 +208,7 @@
             <div class="main-content-inner">
                 <?php foreach ($getAllProducts as $getAllProduct): ?>
                 <div class="product-item">
-                	<!-- 
+                	<!--
                 	<?php if($getAllProduct['created'] != null && $getAllProduct['created'] !=  '') {
 						    $first_date = strtotime(date('Y-m-d'));
 						    $date = new DateTime($getAllProduct['created']); //
@@ -216,19 +216,20 @@
 						    $second_date = strtotime($date1);
 						    $datediff = abs($first_date - $second_date);
 						    $totalday =  floor($datediff/(60*60*24));
-						    if($totalday < 30 ){ 
+						    if($totalday < 30 ){
 						    	echo '<div class="new-product" id="new'.$totalday.'"></div>';
-						    }							
+						    }
                 	 } ?>
                 	  -->
-                	<!-- 
+                	<!--
                     <div class="new-product"></div>
                      -->
                     <div class="img-product-item">
                     	<!-- <a href="<?php echo base_url($getAllProduct['seo_name']); ?>.html"><img src="<?php echo str_replace('http://vuabanle.vn/', '', $getAllProduct['productImage']) ; ?>" alt="<?php echo $getAllProduct['productName'];?>" title="<?php echo $getAllProduct['productName'];?>"></a> -->
-                    	
+
                         <a href="<?php echo base_url($getAllProduct['seo_name']); ?>.html">
-                        	<img src="<?php echo base_url($getAllProduct['productImage']);?>" alt="<?php echo $getAllProduct['productName'];?>" title="<?php echo $getAllProduct['productName'];?>">
+                        	<!--<img src="<?php echo base_url($getAllProduct['productImage']);?>" alt="<?php echo $getAllProduct['productName'];?>" title="<?php echo $getAllProduct['productName'];?>">-->
+                            <img class="lazy" data-original="<?php echo base_url($getAllProduct['productImage']); ?>" alt="<?php echo $getAllProduct['productName'];?>"  src="<?php echo base_url('assets/2015/js/loading.gif');?>"
                         </a>
                     </div>
                     <h2 class="product-name"><a href="<?php echo base_url($getAllProduct['seo_name']); ?>.html"><?php echo  word_limiter($getAllProduct['productName'], 9,'...'); ?></a></h2>
@@ -255,7 +256,7 @@
                             <img src="<?php echo base_url();?>/assets/font-end/images/pro/StockStatus3.gif">
                         <?php } ?>
                     </div>
-                    
+
 					<div class="small-info">
                         <span class="count-view" title="Lượt xem sản phẩm" style="cursor: help"><?php if($getAllProduct['view'] != ""){ echo  @$getAllProduct['view']; } ?></span><br>
                         <span class="local-ship" title="Địa điểm giao hàng" style="cursor: help"><?php if($getAllProduct['ghod'] != null){ ?>
@@ -278,7 +279,7 @@
 					<?php } ?>
                 </div><!--End Product Item-->
                 <?php endforeach;?>
-                
+
             </div>
 
             <div class="page-number">

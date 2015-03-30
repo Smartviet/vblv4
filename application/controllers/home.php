@@ -158,9 +158,15 @@ class Home extends Layout {
 		$getCateUri = $this->category_model->getCateUri($getCategDetail->catID, $cap = 1);
 		$getBrandUsingCates = $this->brand_model->getBrandUsingCate($getCategDetail->catID);
 		$page = $this->uri->segment(2);
-		$config['per_page'] = 12;
+		$config['per_page'] = 100;
 		$getProdUsingCates = $this->products_model->getProdUsingCates($getCategDetail->catID,$config['per_page'] , $page);
-		
+
+
+        // lay get sub menu # v4
+        $getCategory2level = $this->category_model->getCategory2level($getCategDetail->catID);
+        $getSubMenus = $this->category_model->getSubMenu($getCategDetail->catID);
+
+
 		
 		$this->breadcrumbcomponent->add('Trang chủ', base_url());
 		$this->breadcrumbcomponent->add($getCategDetail->catName, base_url());
@@ -189,8 +195,12 @@ class Home extends Layout {
 				'getProdUsingCates' => $getProdUsingCates['products'],
 				'bradcrumbs' => $bradcrumbs,
 				'paging' => $config['paging'],
+                'getCategory2levels' => $getCategory2level,
+                'getSubMenus' => $getSubMenus,
 		), true);
 		$this->load->view('v3template/layout_view', $this->_data);
+
+
 	}
 	
 	
@@ -273,7 +283,7 @@ class Home extends Layout {
 		$getBrandUsingCates = $this->brand_model->getBrandUsingCate($getCategDetail->catID);
 		
 		
-		$config['per_page'] = 16;
+		$config['per_page'] = 100;
 		$page = 0;
 		
 		if($this->uri->segment(2) && $this->uri->segment(2) != null ){
