@@ -51,6 +51,27 @@ class Home_model extends CI_Model
 		return $return;
 	}
 
+    public function getAllCategoryTree2()
+    {
+        $return = $data = array();
+        $sql = "SELECT catID, parentID, catName, keypage FROM `tbl_categories` WHERE `status` = 1 AND parentID = 0  ORDER BY stt ASC";
+        $query = $this->db->query($sql);
+        $results = $query->result_array();
+        foreach ($results as $key=>$item){
+            if($item['parentID'] == 0){
+                unset($results[$key]);
+                $item['cate_child1'] = $this->orderCat($item['catID']);
+                $return[] = $item;
+                $query->free_result();
+            }
+            $query->free_result();
+
+        }
+        $query->free_result();
+        //print_r($return);
+        return $return;
+    }
+
 	public function orderCat($id)
 	{
 		$return = array();
@@ -287,6 +308,28 @@ class Home_model extends CI_Model
 			return FALSE;
 		}
 	}
+
+    public function gettopView()
+    {
+        $sql = "SELECT * FROM tbl_product WHERE  status = 1 ORDER BY view DESC LIMIT 5 ";
+        $query = $this->db->query($sql);
+        if($query) {
+            return $query->result_array();
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function gettopnew()
+    {
+        $sql = "SELECT * FROM tbl_product WHERE  status = 1 ORDER BY created DESC LIMIT 5 ";
+        $query = $this->db->query($sql);
+        if($query) {
+            return $query->result_array();
+        } else {
+            return FALSE;
+        }
+    }
 	
 	
 	

@@ -12,7 +12,8 @@ class Home extends Layout {
 		parent::__construct();
 		$this->load->model('home_model', 'home_model');
 		$this->load->model('athome_model', 'athome_model');
-		$this->load->model('utility_model', 'utility_model');		
+		$this->load->model('utility_model', 'utility_model');
+        $this->load->model('bigsale_model', 'bigsale_model');
 		//$this->load->model('config_model', 'config_model');
 		$this->load->library('email');
 
@@ -80,6 +81,12 @@ class Home extends Layout {
 		$getAllBrand = $this->home_model->getAllBrand();
 		$getAllatHome = $this->athome_model->getAll();
 		$getPopup  = $this->home_model->getPopup();
+
+
+        $gettopView  = $this->home_model->gettopView();
+        $gettopnew  = $this->home_model->gettopnew();
+        //var_dump($gettopView);
+
 		
 		
 		$configall = $this->config_model->getConfig();
@@ -88,6 +95,10 @@ class Home extends Layout {
 			'description' => $configall->site_describe,
 			'keywords' => $configall->site_keyword,
 		);
+
+
+        $getProductPromotion = $this->bigsale_model->getUti(5);
+
 
 		
 		$this->_data['main_content'] = $this->load->view('v3template/home_view', array(
@@ -99,6 +110,9 @@ class Home extends Layout {
 			'getAllatHomes' => $getAllatHome,
 			'meta' => $meta,
 			'getPopup' => $getPopup,
+            'gettopViews' => $gettopView,
+            'gettopnews' => $gettopnew,
+            'gettoptPromotions' => $getProductPromotion
 		), true);
 		$this->load->view('v3template/layout_view', $this->_data);
 	}

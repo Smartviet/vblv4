@@ -1,0 +1,1 @@
+<iframe style="border: 0; height: 200px; width: 600px;" src="http://analytics.vuabanle.vn/index.php?module=CoreAdminHome&action=optOut&language=en"></iframe>

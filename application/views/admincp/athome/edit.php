@@ -49,6 +49,21 @@ $(document).ready(function(){
 							</div>
 							<div class="clear"></div>
 						</div>
+                        <div class="row-form">
+                            <div class="span3">liên kết danh mục</div>
+                            <div class="span3">
+
+                                <select name="catidconnect" id="catidconnect">
+                                    <option value="0">Mời chọn liên kết thư mục</option>
+                                    <?php foreach ($getMenulv2 as $key => $value): ?>
+                                    <option <?php if($value['catID'] == $athome->catidconnect){ echo "selected"; } ?> value="<?=  $value['catID'] ?>"><?= $value['catName'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+
 						
 						<!-- thme moi imgurl -->
 						<div class="row-form">

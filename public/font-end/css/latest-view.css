@@ -1,0 +1,237 @@
+/* Email Author : tranngoclam1909@gmail.com */
+
+.latest-view{
+    float: left;
+    width: 100%;
+    margin-top: 30px;
+    border: 1px #d1d1d1 dashed;
+    padding: 0px 15px;
+}
+
+.task-latest-view{
+    width: 898px;
+    float: left;
+    height: 40px;
+    border-bottom: 1px solid #d1d1d1;
+    margin-bottom: 15px;
+}
+
+.task-latest-view .title{
+    font-family: arial, helvetica, sans serif;
+    color: #505050;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 40px;
+    float: left;
+    height: 40px;
+}
+
+
+/* clearfix */
+.owl-carousel .owl-wrapper:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+/* display none until init */
+.owl-carousel{
+    display: none;
+    position: relative;
+    width: 100%;
+    -ms-touch-action: pan-y;
+}
+.owl-carousel .owl-wrapper{
+    display: none;
+    position: relative;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+}
+.owl-carousel .owl-wrapper-outer{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    float: left;
+}
+.owl-carousel .owl-wrapper-outer.autoHeight{
+    -webkit-transition: height 500ms ease-in-out;
+    -moz-transition: height 500ms ease-in-out;
+    -ms-transition: height 500ms ease-in-out;
+    -o-transition: height 500ms ease-in-out;
+    transition: height 500ms ease-in-out;
+}
+
+.owl-carousel .owl-item{
+    float: left;
+}
+.owl-controls .owl-page,
+.owl-controls .owl-buttons div{
+    cursor: pointer;
+}
+.owl-controls {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    position: absolute;
+    top: 7px;
+    right: 0px;
+}
+
+/* mouse grab icon */
+.grabbing {
+    cursor:url(grabbing.png) 8 8, move;
+}
+
+/* fix */
+.owl-carousel  .owl-wrapper,
+.owl-carousel  .owl-item{
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility:    hidden;
+    -ms-backface-visibility:     hidden;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+}
+
+.owl-prev{
+    background: url("images/icon-rowsld.png");
+    width: 26px;
+    height: 26px;
+    background-position: 0px 0px;
+    float: left;
+    margin-right: 6px;
+}
+
+.owl-prev{
+    background: url("images/icon-rowsld.png");
+    width: 26px;
+    height: 26px;
+    background-position: 0px 0px;
+    float: left;
+}
+
+.owl-next{
+    background: url("images/icon-rowsld.png");
+    width: 26px;
+    height: 26px;
+    background-position: 26px 0px;
+    float: left;
+}
+
+.latest-view .product-item{
+    width: 178px;
+}
+
+.latest-view .img-product-item{
+    width: 158px;
+    height: 158px;
+    overflow: hidden;
+}
+
+.latest-view .img-product-item img {
+    max-width: 154px;
+    max-height: 154px;
+}
+
+.latest-view .product-mask {
+    top: 0px;
+    left: 0px;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    padding-left: 1px;
+    background: url("images/icon-sale-price-1.png") center no-repeat;
+    background-size: 42px 42px;
+}
+
+.latest-view .product-mask span {
+    font-size: 14px;
+}
+
+.latest-view .product-item{
+    /*box-sizing: border-box;*/
+    text-align: center;
+    height: 280px;
+}
+
+.latest-view .product-item:hover {
+    border: 1px #e5e5e5 solid;
+}
+
+.latest-view  .button-buy{
+    top: 75px;
+    left: 40px;
+}
+
+.latest-view .product-item:hover img {
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+}
+
+.latest-view .product-price {
+    width: 158px;
+}
+
+.latest-view .product-name {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.latest-view .new-price {
+    font-size: 14px;
+}
+
+/*Slide image zoom*/
+#slider-images .owl-carousel{
+    display: none;
+    position: relative;
+    width: 83%;
+    margin: 0 auto;
+    margin-top: 10px;
+    -ms-touch-action: pan-y;
+}
+
+#slider-images .owl-carousel .owl-wrapper-outer {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    float: left;
+    z-index: 9;
+}
+
+#slider-images .owl-next {
+    background: url("images/arrow-button-zoom.png");
+    width: 14px;
+    height: 24px;
+    background-position: 14px 0px;
+    float: left;
+    position: absolute;
+    right: -20px;
+    top: 5px;
+}
+
+#slider-images .owl-prev {
+    background: url("images/arrow-button-zoom.png");
+    width: 14px;
+    height: 24px;
+    background-position: 0px 0px;
+    float: left;
+    position: absolute;
+    left: -20px;
+    top: 5px;
+}
+
+#slider-images .owl-controls{
+    width: 100%;
+}
+
+#slider-images .owl-controls .owl-buttons{
+    width: 100%;
+    position: relative;
+}

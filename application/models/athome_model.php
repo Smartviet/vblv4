@@ -8,16 +8,46 @@ class Athome_model extends CI_Model
 	
 	public function getAll()
 	{
+        $return = array();
 		$sql = "SELECT *FROM tbl_home_main ORDER BY stt ASC";
 		$query = $this->db->query($sql);
+        $row = $query->result_array();
+
+
+        foreach($row as $key => $item)
+        {
+            $item['connectmenu'] = $this->getCategory2level($item['catidconnect'], 0);
+            $return[] = $item;
+        }
+
+
 		if($query){
-			return $query->result_array();
+			return $return;
 		}else {
 			return false;
 		}
 	}
-	
-	/**
+
+    public function getCategory2level($item = 0, $level = 0)
+    {
+        $level++;
+        $return = array();
+        $sql = "SELECT catid, catName, keypage FROM tbl_categories WHERE parentID = $item  ORDER BY catid LIMIT 4";
+        $query = $this->db->query($sql);
+
+
+        $rows = $query->result_array();
+        foreach ($rows as $key => $item) {
+            unset($rows[$key]);
+            $item['level'] = $level;
+            $item['CatChild'] = $this->getCategory2level($item['catid'], $level);
+            $return[] =  $item;
+        }
+        return $return;
+    }
+
+
+    /**
 	 * lay du lieu trong menu roi do ra mang
 	 */
 	function getMenulv2()
@@ -127,7 +157,7 @@ class Athome_model extends CI_Model
 	
 	public function getCateWhereParent($parentID)
 	{
-		$sql = "SELECT catID, keypage, parentID, catName FROM tbl_categories WHERE parentID = $parentID  ORDER BY catName ASC ";
+		$sql = "SELECT catID, keypage, parentID, catName FROM tbl_categories WHERE parentID = $parentID AND `status` = 1 ORDER BY catName ASC ";
 		$query = $this->db->query($sql);
 		if($query){
 			return $query->result_array();

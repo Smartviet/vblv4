@@ -662,14 +662,14 @@ $(document).ready(function(){
 	});
 	var site_name = $('#site_name').val();
 	$('#newsTitle').bind('change', function() {
-		$('#metaTitle').val($(this).val() + ' :: ' + site_name);
+		$('#metaTitle').val($(this).val());
 	});
 	$('#productName').bind('change', function() {
 		$('#seo_name').val(generateSlug($(this).val()));
 	});
 	var site_name = $('#site_name').val();
 	$('#productName').bind('change', function() {
-		$('#metaTitle').val($(this).val() + ' :: ' + site_name);
+		$('#metaTitle').val($(this).val());
 	});
 	
 	
@@ -677,7 +677,7 @@ $(document).ready(function(){
 		$('#keypage').val(generateSlug($(this).val()));
 	});
 	$('#catName').bind('change', function() {
-		$('#metaTitle').val($(this).val() + ' :: ' + site_name);
+		$('#metaTitle').val($(this).val() );
 	});
 	
 });	

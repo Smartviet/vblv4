@@ -64,6 +64,8 @@ $route['register/saveAjax1'] = "register/saveAjax1/$1";
 
 // ============================ ADMIN ======================================== //
 $route['admincp'] = "admincp/admincp/index/$1";
+$route['admincp/analytics'] = "admincp/admincp/analytic/$1";
+
 
 
 

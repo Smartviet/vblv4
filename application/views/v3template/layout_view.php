@@ -65,34 +65,15 @@
 
     <script src="<?php echo base_url('assets/2015/js/jquery.lazyload.js');?>"></script>
 
-    <!---
-    <script type="text/javascript">
-        $(function() {
-            $("img.lazy").lazyload({
-                event : "sporty",
-                effect : "fadeIn",
-                // threshold : 200,
-                placeholder : "<?php echo base_url('assets/2015/js/loading.gif');?>"
-            });
-        });
-
-        $(window).bind("load", function() {
-            var timeout = setTimeout(function() {
-                $("img.lazy").trigger("sporty")
-            }, 5000);
-        });
-    </script>
-    placeholder : "<?php echo base_url('assets/2015/js/loading.gif');?>"
-    -->
-
-
 
     <script type="text/javascript">
         $(function(){
             $("img.lazy").lazyload();
-        });
 
+        });
     </script>
+
+
 
     <!-- // HOME -->
     <?php if($this->uri->segment(1) && $this->uri->segment(1) != null){ ?>

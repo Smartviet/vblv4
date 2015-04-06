@@ -84,19 +84,32 @@ class Category_model extends CI_Model
 
 
 
-
     /*
      * lay ra toan bo chuyen muc con duoc athoem la 1 va 4 san pham thuoc athome do
      */
     public function setSubCatAndProduct($id)
     {
-        $sql = "SELECT catid, catName, parentID, catImage, keypage FROM tbl_categories WHERE parentID = $id ORDER BY catid";
+        $sql = "SELECT catid, catName, parentID, catImage, keypage FROM tbl_categories WHERE parentID = $id AND status = 1 ORDER BY catid";
         $query = $this->db->query($sql);
         if($query->num_rows() > 0){
             return $query->result_array();
             $query->free_result();
         }else {
             return FALSE;
+        }
+    }
+
+    /*
+     * lay ra toan bo danh muc cha
+     */
+    public function getCateWhere($id)
+    {
+        $sql = "SELECT catID, keypage, parentID, catName FROM tbl_categories WHERE parentID = $id AND status = 1 ORDER BY catName ASC ";
+        $query = $this->db->query($sql);
+        if($query){
+            return $query->result_array();
+        }else {
+            return false;
         }
     }
 
@@ -108,7 +121,7 @@ class Category_model extends CI_Model
 	 */
 	function getMenulv2()
 	{
-		$this->db->cache_on();
+		//$this->db->cache_on();
 		$sql = mysql_query("SELECT * FROM tbl_categories  ORDER BY stt ASC ");
 		while ($row_details = mysql_fetch_array($sql)) {
 			$array = array(
@@ -322,20 +335,7 @@ class Category_model extends CI_Model
 		}
 	}
 	
-	/**
-	 *  count xem co bao nhieu category static
-	 */
-	static public function staticCountCate($id)
-	{
-		$sql = "SELECT catID,parentID FROM tbl_categories WHERE parentID = $id AND status = 1";
-		//echo $sql;
-		$query = $this->db->query($sql);
-		if($query->num_rows() > 0){
-			return $query->num_rows();
-		}else {
-			return FALSE;
-		}
-	}
+
 	
 	
 	

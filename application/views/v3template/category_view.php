@@ -162,7 +162,7 @@
 
                 <div class="product-item">
                     <div class="img-product-item">
-                        <a href="<?php echo base_url($subProduct['seo_name']); ?>.html"><img class="lazy" data-original="<?php echo base_url($subProduct['productImage']); ?>" alt="<?php echo $subProduct['productName'];?>"  src="<?php echo base_url('assets/2015/js/loading.gif');?>" alt="<?php echo $subProduct['productName'];?>" title="<?php echo $subProduct['productName'];?>"></a>
+                        <a href="<?php echo base_url($subProduct['seo_name']); ?>.html"><img class="lazy" data-original="<?php echo base_url($subProduct['productImage']); ?>" src="<?php echo base_url('assets/2015/js/loading.gif');?>" alt="<?php echo $subProduct['productName'];?>" title="<?php echo $subProduct['productName'];?>"></a>
                     </div>
                     <h2 class="product-name"><a href="<?php echo base_url($subProduct['seo_name']); ?>.html"><?php echo  word_limiter($subProduct['productName'], 9,'...'); ?></a></h2>
                     <div class="product-price">

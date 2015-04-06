@@ -17,4 +17,9 @@ class Admincp extends Ad_layout
 	{
 		$this->load->view('admincp/ad_layout_view', $this->_data);
 	}
+
+    public function analytic()
+    {
+        $this->load->view('admincp/analytic_view', $this->_data);
+    }
 }

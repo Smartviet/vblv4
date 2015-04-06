@@ -1,7 +1,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $("#contact").validate({
-        errorElement: "span", // Định dạng cho thẻ HTML hiện thông báo lỗi
+        errorElement: "span" // Định dạng cho thẻ HTML hiện thông báo lỗi
     }); 
 }); 
 </script>
@@ -338,7 +338,7 @@ $(document).ready(function(){
 							</script>
 							<div class="span2">Khuyến mãi</div>
 							<div class="span1">
-                            	<label> <input type="radio" name="sale" value="1" >Có</lable> 
+                            	<label> <input type="radio" name="sale" value="1" >Có</label>
                             	<label><input type="radio" name="sale" value="0"  >Không </label>
                             </div>
                             <div class="span2">Thời gian hết Khuyến mãi</div> 

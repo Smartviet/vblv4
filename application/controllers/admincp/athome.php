@@ -109,6 +109,7 @@ class Athome extends Ad_layout
 			'titlenameimglink' => $arrtitlenameimglink,
 			'status' => $this->input->post('status'),
 			'created' => date('Y-m-d H:i:s'),
+            'catidconnect' => $this->input->post('catidconnect'),
 		);
 	
 		if($this->input->post('updated') != ""){
@@ -141,9 +142,10 @@ class Athome extends Ad_layout
 		if ($this->input->post () != "") {
 			$this->updated ();
 		}
-		$getMenulv2 = $this->category_model->getMenulv2 ();
+		$getMenulv2 = $this->category_model->getCateWhere(0);
 		$this->_data ['ad_main_content'] = $this->load->view ( 'admincp/athome/edit', array (
 				'athome' => $athome,
+                'getMenulv2' => $getMenulv2,
 		), true );
 		$this->load->view ( 'admincp/ad_layout_view', $this->_data );
 	}
@@ -227,6 +229,7 @@ class Athome extends Ad_layout
 				'imageBanner2'=>  str_replace(base_url(),'', $this->input->post('imageBanner2')),
 				'urlBanner2'=> $this->input->post('urlBanner2'),
 				'content'=> $this->input->post('content'),
+                'catidconnect' => $this->input->post('catidconnect'),
 		);
 		
 		$updated = $this->utility_model->updated('catID' ,$this->input->post('catID'),$this->table, $data);

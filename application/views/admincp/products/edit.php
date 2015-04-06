@@ -1,7 +1,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $("#contact").validate({
-        errorElement: "span", // Định dạng cho thẻ HTML hiện thông báo lỗi
+        errorElement: "span" // Định dạng cho thẻ HTML hiện thông báo lỗi
     });
 }); 
 </script> 
@@ -352,7 +352,7 @@ $(document).ready(function(){
 							</script>
 							<div class="span2">Khuyến mãi</div>
 							<div class="span1">
-                            	<label> <input type="radio" name="sale" value="1" <?php if($productDetail->sale == 1){ echo "checked"; } ?>>Có</lable> 
+                            	<label> <input type="radio" name="sale" value="1" <?php if($productDetail->sale == 1){ echo "checked"; } ?>>Có</label>
                             	<label><input type="radio" name="sale" value="0"  <?php if($productDetail->sale == 0){ echo "checked"; } ?>>Không </label>
                             </div>
                             <div class="span2">Thời gian hết Khuyến mãi</div> 
@@ -378,10 +378,10 @@ $(document).ready(function(){
 							</div>
 							<div class="span1">kiểu </div>
 							<div class="span3">
-								<label> <input type="radio" name="typePromotion" value="1" <?php if($productDetail->typePromotion == 1){ echo "checked"; } ?> >Kiểu 1 (Vuông)</lable>
-								<label> <input type="radio" name="typePromotion" value="2" <?php if($productDetail->typePromotion == 2){ echo "checked"; } ?> >Kiểu 2 (Chữ nhật ngang)</lable>
-								<label> <input type="radio" name="typePromotion" value="3" <?php if($productDetail->typePromotion == 3){ echo "checked"; } ?>>Kiểu 3 (Chữ nhật thẳng)</lable>
-								<label> <input type="radio" name="typePromotion" value="4" <?php if($productDetail->typePromotion == 4){ echo "checked"; } ?>>Kiểu 4 (..) </lable>
+								<label> <input type="radio" name="typePromotion" value="1" <?php if($productDetail->typePromotion == 1){ echo "checked"; } ?> >Kiểu 1 (Vuông)</label>
+								<label> <input type="radio" name="typePromotion" value="2" <?php if($productDetail->typePromotion == 2){ echo "checked"; } ?> >Kiểu 2 (Chữ nhật ngang)</label>
+								<label> <input type="radio" name="typePromotion" value="3" <?php if($productDetail->typePromotion == 3){ echo "checked"; } ?>>Kiểu 3 (Chữ nhật thẳng)</label>
+								<label> <input type="radio" name="typePromotion" value="4" <?php if($productDetail->typePromotion == 4){ echo "checked"; } ?>>Kiểu 4 (..) </label>
 							</div>
 							<div class="span1">STT</div>
 							<div class="span2">
@@ -394,10 +394,9 @@ $(document).ready(function(){
 						<div class="row-form">
                             <div class="span5">Duyệt bài viết  :</div>
                             <div class="span7">
-                            	<label> <input type="radio" name="adstatus" value="1" <?php if($productDetail->adstatus == 1){ echo "checked"; } ?>>Đã duyệt <br> </lable>
+                            	<label> <input type="radio" name="adstatus" value="1" <?php if($productDetail->adstatus == 1){ echo "checked"; } ?>>Đã duyệt <br> </label>
                             	<label> <input type="radio" name="adstatus" value="0"  <?php if($productDetail->adstatus == 0){ echo "checked"; } ?>>Chưa duyệt </label>
                             </div>
-                            
                             <div class="clear"></div>
                         </div>
                         <?php } ?>
