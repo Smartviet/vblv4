@@ -25,7 +25,7 @@ var google_remarketing_only = false;
 
 <script type="text/javascript">
 	$(document).ready(function(){
-            function formatCurrency(num) 
+            function formatCurrency(num)
              {
                 num = num.toString().replace(/\$|\,/g,'');
                 if(isNaN(num))
@@ -42,15 +42,17 @@ var google_remarketing_only = false;
                 var contry = parseInt($( ".country option:selected" ).attr("price"));
                 console.log(contry);
                 $('.contruy').html(formatCurrency(contry) +" VND");
-                
+
                 $('#phivanchuyen').val(contry);
-                
+
                 var total = parseInt($("#totalmount").val());
                 var all = contry+total;
                 $('.total_amount').html(formatCurrency(all)+" VND");
             });
+            var totalsp = <?= $total_record ?>;
+            $('.number-cart').html(totalsp);
 
-            
+
 
         });
 </script>
@@ -75,7 +77,7 @@ var google_remarketing_only = false;
                                 <td class="info"><input type="text" name="fullname"><input type="hidden" id="phivanchuyen"  name="phivanchuyen" value="" ></td>
                                 <td><div class="error1"><?php echo form_error('fullname'); ?></div></td>
                             </tr>
-                            
+
                             <tr>
                                 <td>Email <span class="red">*</span></td>
                                 <td><input type="text"  name="email" ></td>
@@ -129,7 +131,7 @@ var google_remarketing_only = false;
         </div><!--End Login Register-->
 
         <div class="order-list">
-            
+
             <h5 class="title">Đơn hàng của bạn</h5>
 
             <div class="order-list-inner">

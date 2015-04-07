@@ -29,6 +29,7 @@ $(document).ready(function(){
 				$json_decode_namelinks = json_decode($athome->namelink);
 				$json_decode_adslinks = json_decode($athome->adslink);
 				$json_decode_titlenameimglinks = json_decode($athome->titlenameimglink);
+                $json_decode_navlinks = json_decode($athome->navlinks);
 				?>
 					<div class="block-fluid">
 						<?php if(isset($error) && $error != ""){ ?>
@@ -64,6 +65,7 @@ $(document).ready(function(){
                         </div>
 
 
+
 						
 						<!-- thme moi imgurl -->
 						<div class="row-form">
@@ -77,6 +79,8 @@ $(document).ready(function(){
 							</div>
 							<div class="clear"></div>
 						</div>
+
+
 						<!-- titlenameimglink -->
 						<script type="text/javascript">
                             //var file_id = <?php echo count($json_decode_imgurlbrands) ;?>;
@@ -124,6 +128,56 @@ $(document).ready(function(){
                                     <div class='clear'></div>
                                 </div>
                         </div>
+
+                        <!-- titlenameimglink -->
+                        <script type="text/javascript">
+                            //var file_id = <?php echo count($json_decode_navlinks) ;?>;
+                            $(document).ready(function(){
+                                var file_id = <?php echo count($json_decode_navlinks) ;?> + 1;
+                                $("#addsSublinks").click(function(){
+                                    html = "<div id='wadelimgurlbrand' style='float: left; width: 100%;'><div class='span3'>Sublinks " + file_id + "</div>";
+                                    html +=  "<div class='span5'>";
+                                    html += "<input id='navlinks" + file_id + "' name='navlinks[]' type='text' size='60' placeholder='link liên kết ' />";
+                                    html += "<input id='navlinks1" + file_id + "' name='navlinks1[]' type='text' size='60' placeholder='từ miêu tả' />";
+                                    html += "</div>";
+                                    html += "<div class='span1'>";
+                                    html += "</div>";
+                                    html += "<input type='button' id='delimgurlbrand' class='btn btn-warning delbtn' value='xoa'>";
+                                    html += "</div></div>";
+                                    $('.wpsublinks').append(html);
+                                    file_id ++;
+                                });
+                                $('.wpsublinks').on('click', '#delnavlinks', function(){
+                                    $(this).closest('#closenavlinks').remove();
+                                });
+                            });
+                        </script>
+                        <div class="row-form ">
+                            <div class="span2 min"><input type="button" id="addsSublinks" class="btn btn-info" value="Sublinks" /></div>
+                            <div class="namelink">
+                                <div class="row-form1 wpsublinks">
+                                    <?php $i = 1;
+                                    foreach ($json_decode_navlinks AS  $json_decode_navlink) { ?>
+                                        <?php $brandid =  $json_decode_navlink ?>
+                                        <div style="float: left; width: 100%;" id="closenavlinks">
+                                            <div class="span3">Sublinks <?php echo $i; ?></div>
+                                            <div class="span5">
+                                                <input type="text" placeholder="link liên kết" size="60" name="navlinks[]" id="navlinks" value="<?php echo $json_decode_navlink->navlinks; ?>">
+                                                <input type="text" placeholder="từ miêu tả" size="60" name="navlinks1[]" id="navlinks1<?php echo $i; ?>" value="<?php echo $json_decode_navlink->navlinks1; ?>">
+                                            </div>
+                                            <div class="span1"></div>
+                                            <input type="button" value="xoa" class="btn btn-warning delbtn" id="delnavlinks">
+                                        </div>
+                                        <?php $i++; } ?>
+                                    <div class='clear'></div>
+                                </div>
+                                <div class='clear'></div>
+                            </div>
+                        </div>
+
+
+
+
 						<!-- namelink -->
 						<script type="text/javascript">
                             $(document).ready(function(){

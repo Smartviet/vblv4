@@ -40,8 +40,8 @@ header{
 }
 
 #logo img{
-    /*padding: 14px 0px 0px 0px;*/
-    padding: 0px 0px 0px 0px;
+    padding: 14px 0px 0px 0px;
+    box-sizing: content-box;
 }
 
 #search-box{
@@ -57,7 +57,7 @@ header{
 
 #search-input{
     height: 39px;
-    border: 2px #f34b26 solid;
+    border: 2px #ff6600 solid;
     /*border-radius: 5px;*/
     display: inline-block;
 }
@@ -146,7 +146,7 @@ input.key-search{
 }
 
 .search-button{
-    background-color: #f34b26;
+    background-color: #ff6600;
     color: #fff;
     font-family: arial, helvetica, sans serif;
     font-size: 12px;
@@ -188,7 +188,7 @@ input.key-search{
 }
 
 .title-login a:hover{
-    color: #f34b26;
+    color: #ff6600;
 }
 
 .title-login input{
@@ -201,7 +201,7 @@ input.key-search{
 }
 
 .title-login input:hover{
-    color: #f34b26;
+    color: #ff6600;
 }
 
 .meta-login{
@@ -222,7 +222,7 @@ input.key-search{
 }
 
 .number-cart{
-    background-color: #f34b26;
+    background-color: #ff6600;
     color: #fff;
     font-family: arial, helvetica, sans serif;
     font-size: 11px;
@@ -254,7 +254,7 @@ input.key-search{
 #title-menu{
     height: 35px;
     background: url("images/menu-icon.png") left 11px center no-repeat;
-    background-color: #f34b26;
+    background-color: #ff6600;
     color: #fff;
     font-family: arial, helvetica, sans serif;
     font-size: 12px;
@@ -285,14 +285,46 @@ input.key-search{
 
 /* Policy */
 #policy{
-    width: 660px;
+    width: 677px;
     float: left;
     margin-left: 220px;
-    padding-top: 10px;
     padding-left: 20px;
     height: 48px;
     /*margin-top: 20px;*/
 }
+
+.suggest-keyword {
+    font-family: arial, helvetica, sans serif;
+    font-size: 11px;
+    position: relative;
+    top: 0px;
+}
+
+.suggest-keyword .title {
+    color: #ff6600;
+    font-weight: bold;
+}
+
+.suggest-keyword .key {
+    color: #777;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.big-sale {
+    font-family: arial, helvetica, sans serif;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 19px;
+}
+
+.big-sale .item {
+    margin-right: 20px;
+    color: #505050;
+    text-decoration: none;
+}
+
+
 
 .cskh {
     width: 25%;
@@ -402,7 +434,7 @@ input.key-search{
 }
 
 .cskh:hover .uspline{
-    color: #f34b26;
+    color: #ff6600;
 }
 
 #hotline{
@@ -423,7 +455,7 @@ input.key-search{
 }
 
 #hotline span.orange{
-    color: #f34b26;
+    color: #ff6600;
     background: none;
     padding-left: 0px;
 }
@@ -541,7 +573,7 @@ footer{
     font-weight: bold;
     color: #fff;
     cursor: pointer;
-    background-color: #f34b26;
+    background-color: #ff6600;
     padding: 11px 18px;
     border-radius: 5px;
 }
@@ -594,7 +626,7 @@ footer{
     margin-right: 20px;
     background-color: #fff;
     border: 1px #d1d1d1 solid;
-    
+
     padding: 7px;
 }
 
@@ -636,7 +668,7 @@ footer{
 .filter-group a{
     float: right;
     text-decoration: none;
-    color: #f34b26;
+    color: #ff6600;
 }
 
 .filter-group a:hover{
@@ -669,7 +701,7 @@ footer{
 }
 
 .all-product ul li:hover a{
-    color: #f34b26;
+    color: #ff6600;
 }
 
 .all-product ul li a .count{
@@ -708,7 +740,7 @@ footer{
 }
 
 .brand-product ul li:hover a{
-    color: #f34b26;
+    color: #ff6600;
 }
 
 .brand-product ul li a .count{
@@ -722,7 +754,7 @@ input#filter12{
     line-height: 20px;
     padding-left: 13px;
     border-radius: 3px;
-    
+
     float: left;
     margin-right: 4px;
 }
@@ -797,7 +829,7 @@ input#search-brand-button{
     width: 100%;
     float: left;
     height: 40px;
-    border-bottom: 2px solid #f34b26;
+    border-bottom: 2px solid #ff6600;
     /*margin-bottom: 15px;*/
     background-color: #f2f2f2;
 }
@@ -811,7 +843,7 @@ input#search-brand-button{
     line-height: 40px;
     float: left;
     height: 40px;
-    background-color: #f34b26;
+    background-color: #ff6600;
     padding: 0 15px;
 }
 
@@ -905,7 +937,7 @@ input#search-brand-button{
     padding: 10px;
     position: relative;
     margin-bottom: 15px;
-    
+
     height: 370px;
     border: 1px #fff solid;
 }
@@ -919,7 +951,7 @@ input#search-brand-button{
 }
 
 .product-item:hover{
-    border: 1px #f34b26 solid;
+    border: 1px #ff6600 solid;
 }
 
 .product-item img{
@@ -1026,7 +1058,7 @@ input#search-brand-button{
     font-family: arial, helvetica, sans serif;
     font-size: 20px;
     font-weight: bold;
-    color: #f34b26;
+    color: #ff6600;
 }
 
 .product-mask{
@@ -1056,7 +1088,7 @@ input#search-brand-button{
     left: 64px;
     width: 100px;
     height: 30px;
-    background-color: #f34b26;
+    background-color: #ff6600;
     text-align: center;
     line-height: 30px;
     display: none;
@@ -1067,7 +1099,7 @@ input#search-brand-button{
 }
 
 .button-buy input{
-    background-color: #f34b26;
+    background-color: #ff6600;
     color: #fff;
     cursor: pointer;
     font-size: 14px;
@@ -1097,7 +1129,7 @@ input#search-brand-button{
     position: relative;
     margin-bottom: 10px;
     border: 1px #e5e5e5 solid;
-    
+
 }
 
 .img-child-category-item{
@@ -1212,12 +1244,12 @@ input#search-brand-button{
 }
 
 #breadcrumb a:hover{
-    color: #f34b26;
+    color: #ff6600;
 }
 
 #breadcrumb span{
     line-height: 30px;
-    color: #f34b26;
+    color: #ff6600;
 }
 
 /* Content Product Detail */
@@ -1262,7 +1294,7 @@ input#search-brand-button{
     width: 550px;
     margin-left: 20px;
     font-family: arial, helvetica, sans serif;
-	border-bottom: 1px #e5e5e5 solid;
+    border-bottom: 1px #e5e5e5 solid;
 }
 
 #product-info .name{
@@ -1285,7 +1317,7 @@ input#search-brand-button{
 }
 
 #product-info .code .color{
-    color: #f34b26;
+    color: #ff6600;
 }
 
 #product-info .code .liwa{
@@ -1307,7 +1339,7 @@ input#search-brand-button{
     padding-left: 10px;
     font-family: arial, helvetica, sans serif;
     font-size: 14px;
-    color: #f34b26;
+    color: #ff6600;
     text-decoration: none;
 }
 
@@ -1318,7 +1350,7 @@ input#search-brand-button{
 #product-info .short-description{
     margin-bottom: 15px;
     margin-top: 5px;
-    border-left: 5px #f34b26 solid;
+    border-left: 5px #ff6600 solid;
     padding-left: 20px;
     float: left;
     min-width: 50%;
@@ -1364,7 +1396,7 @@ input#search-brand-button{
 #product-info .price-buy{
     width: 60%;
     float: left;
-    
+
 }
 
 #product-info .price{
@@ -1392,7 +1424,7 @@ input#search-brand-button{
 }
 
 #product-info .buy-button .buy-now{
-    background-color: #f34b26;
+    background-color: #ff6600;
     padding: 13px 35px;
     color: #fff;
     text-decoration: none;
@@ -1436,7 +1468,7 @@ input#search-brand-button{
     background: url("images/img-support-buy-product.png") left center no-repeat;
     line-height: 20px;
     float: left;
-    
+
     color: #58585a;
     font-weight: normal;
     text-transform: uppercase;
@@ -1463,7 +1495,7 @@ input#search-brand-button{
 
 #product-info .social{
     float: right;
-	padding-right: 80px;
+    padding-right: 80px;
 }
 
 
@@ -1495,7 +1527,7 @@ input#search-brand-button{
 }
 
 #suggestions .product-item:hover{
-    border: 1px #f34b26 solid;
+    border: 1px #ff6600 solid;
 }
 
 #suggestions .product-item .img-product-item{
@@ -1579,13 +1611,13 @@ input#search-brand-button{
     border: 1px #d4d4d4 dashed;
     border-radius: 5px;
     font-family: arial, helvetica, sans serif;
-	background: #fafafa;
+    background: #fafafa;
 }
 
 .list-small-product span.title{
     font-size: 13px;
     font-weight: bold;
-    color: #f34b26;
+    color: #ff6600;
 }
 
 .list-small-product ul{
@@ -1621,12 +1653,12 @@ input#search-brand-button{
 }
 
 .page-number a:hover{
-    background-color: #f34b26;
+    background-color: #ff6600;
 }
 
 .page-number strong{
     font-weight: normal;
-    background-color: #f34b26;
+    background-color: #ff6600;
     color: #fff;
     padding: 7px 10px;
     margin: 0 1px;
@@ -1718,7 +1750,7 @@ input#search-brand-button{
     padding: 20px 20px 20px 20px;
     width: 283px;
     background: #fff;
-    border: #f34b26 3px solid;
+    border: #ff6600 3px solid;
     position: relative;
     z-index: 999999999;
     border-radius: 0px 10px 10px 0px;
@@ -1736,7 +1768,7 @@ input#search-brand-button{
     margin-bottom: 10px;
     font-size: 13px;
     padding-left: 10px;
-    
+
 }
 
 #register-mail-form label.error{
@@ -1791,7 +1823,7 @@ input#search-brand-button{
     float: left;
     margin-top: 30px;
     background-color: #fafafa;
-    border-left: 7px #f34b26 solid;
+    border-left: 7px #ff6600 solid;
 }
 
 .buynow-button-inner{
@@ -1858,7 +1890,7 @@ input#search-brand-button{
 }
 
 .buynow-button-inner .button .buy-now{
-    background-color: #f34b26;
+    background-color: #ff6600;
     padding: 13px 35px;
     color: #fff;
     text-decoration: none;
@@ -1916,7 +1948,7 @@ input#search-brand-button{
 .big-category .item:hover .list-small-category{
     z-index: 2;
     background-color: #fafafa;
-    border: 1px #f34b26 solid;
+    border: 1px #ff6600 solid;
     position: absolute;
     left: -10px;
     padding:3px 10px;
@@ -1944,7 +1976,7 @@ input#search-brand-button{
 
 .big-category .item .list-small-category ul li a:hover{
     text-decoration: underline;
-    color: #f34b26;
+    color: #ff6600;
 }
 
 .big-category .item .img-thumb{
@@ -1973,7 +2005,7 @@ input#search-brand-button{
 }
 
 .big-category .item:hover .title a{
-    color: #F34B26;
+    color: #ff6600;
 }
 
 .big-category .item .title a:hover{
@@ -1996,7 +2028,7 @@ input#search-brand-button{
 
 .filter-more a:hover{
     text-decoration: underline;
-    color: #F34B26;
+    color: #ff6600;
 }
 
 .filter-more a.newest, .filter-more a.most-view{
@@ -2019,7 +2051,7 @@ input#search-brand-button{
 }
 
 .filter-more .button-filter{
-    background-color: #f34b26;
+    background-color: #ff6600;
     color: #fff;
     height: 20px;
     padding: 0px 10px;
@@ -2040,7 +2072,7 @@ input#search-brand-button{
 .view-more-category a{
     font-family: arial, helvetica, sans serif;
     font-size: 12px;
-    color: #F34B26;
+    color: #ff6600;
     text-transform: uppercase;
     line-height: 40px;
     text-decoration: none;
@@ -2052,4 +2084,137 @@ input#search-brand-button{
 
 .more-product-info .no-line{
     border-top: none !important;
+}
+
+/*Advertise Top*/
+#ol-fr-banner-wrapper {
+    height: 60px;
+    -webkit-transition: height 300ms;
+    transition: height 300ms;
+    -moz-transition: height 300ms;
+    overflow: hidden;
+    font-size: 0;
+}
+
+.ol-fr-banner-inner {
+    width: 1190px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+.ol-fr-banner-inner img{
+    /*max-height: 60px;*/
+}
+
+.ol-fr-banner-inner .close-ol-fr-banner {
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    padding: 2px;
+    opacity: 0.5;
+    background-color: #fff;
+    border-radius: 2px;
+    -webkit-transition: opacity 200ms;
+    -moz-transition: opacity 200ms;
+    transition: opacity 200ms;
+}
+
+.ol-fr-banner-inner .close-ol-fr-banner:hover {
+    opacity: 0.8;
+}
+
+/*Top Navibar*/
+#top-navibar{
+    background: #f2f2f2;
+    height: 25px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#top-navibar-inner{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#top-navibar-inner .hotline{
+    font-family: arial, helvetica, sans serif;
+    color: #999;
+    line-height: 25px;
+    font-size: 12px;
+    background: url("images/icon-phone.png") left center no-repeat;
+    background-size: 17px 17px;
+    padding: 0px 0px 0px 25px;
+    width: 160px;
+    float: left;
+}
+
+#top-navibar-inner .social-button{
+    float: left;
+    height: 25px;
+    margin-left: 20px;
+    width: 300px;
+    line-height: 25px;
+}
+
+#top-navibar-inner .social-button .item{
+    float: left;
+    line-height: 25px;
+}
+
+/*suggest-keyword*/
+.suggest-keyword{
+    font-family: arial, helvetica, sans serif;
+    font-size: 11px;
+    position: relative;
+    top: 0px;
+}
+
+.suggest-keyword .title{
+    color: #ff6600;
+    font-weight: bold;
+}
+
+.suggest-keyword .key{
+    color: #777;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.suggest-keyword .key:hover{
+    text-decoration: underline;
+}
+
+/*big-sale*/
+.big-sale{
+    font-family: arial, helvetica, sans serif;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 19px;
+}
+
+.big-sale .item{
+    margin-right: 20px;
+    color: #505050;
+    text-decoration: none;
+}
+
+.big-sale .item:hover{
+    text-decoration: underline;
+}
+
+/*policy-small*/
+.policy-small{}
+
+.policy-small li{
+    float: left;
+    list-style: none;
+    margin-right: 20px;
+}
+
+.policy-small li a{
+    font-family: arial, helvetica, sans serif;
+    font-size: 12px;
+    color: #505050;
+    text-decoration: none;
 }

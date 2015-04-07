@@ -3,7 +3,7 @@
  */
 function fixDiv1() {
     var $top = $('#header');
-    if ($(window).scrollTop() > 133)
+    if ($(window).scrollTop() > 213)
         $top.css({'position': 'fixed', 'top': '0px','z-index':'999999','width':'100%','height':'57px','box-shadow':'0px 1px 2px rgba(0, 0, 0, 0.2)'});
     else
         $top.css({'position': 'relative', 'top': '','z-index':'999999','width':'100%','height':'75px','box-shadow':'none'});
@@ -13,7 +13,7 @@ fixDiv1();
 
 function fixDiv2() {
     var $logo1 = $('#logo-images');
-    if ($(window).scrollTop() > 133)
+    if ($(window).scrollTop() > 213)
         $logo1.css({'padding':'5px 0px 0px 0px'});
     else
         $logo1.css({'padding':'14px 0px 0px 0px'});
@@ -23,7 +23,7 @@ fixDiv2();
 
 function fixDiv3() {
     var $logo = $('#logo-images');
-    if ($(window).scrollTop() > 405)
+    if ($(window).scrollTop() > 485)
         $logo.css({'height':'0px'});
     else
         $logo.css({'height':'47px'});
@@ -33,7 +33,7 @@ fixDiv3();
 
 function fixDiv4() {
     var $search = $('#search-form');
-    if ($(window).scrollTop() > 133)
+    if ($(window).scrollTop() > 213)
         $search.css({'margin-top':'-10px'});
     else
         $search.css({'margin-top':'0px'});
@@ -43,7 +43,7 @@ fixDiv4();
 
 function fixDiv5() {
     var $login = $('#login');
-    if ($(window).scrollTop() > 133)
+    if ($(window).scrollTop() > 213)
         $login.css({'margin-top':'5px'});
     else
         $login.css({'margin-top':'20px'});
@@ -53,7 +53,7 @@ fixDiv5();
 
 function fixDiv6() {
     var $shoppingcart = $('#shopping-cart');
-    if ($(window).scrollTop() > 133)
+    if ($(window).scrollTop() > 213)
         $shoppingcart.css({'margin-top':'5px'});
     else
         $shoppingcart.css({'margin-top':'20px'});
@@ -63,7 +63,7 @@ fixDiv6();
 
 function fixDiv7() {
     var $mainmenu = $('#main-menu');
-    if ($(window).scrollTop() > 405){
+    if ($(window).scrollTop() > 485){
         $mainmenu.css({'position': 'fixed', 'top': '10px','z-index':'999999','width':'220px','height':'0px'});
         $('#title-menu').addClass('title-top');
     }
@@ -76,7 +76,7 @@ fixDiv7();
 
 function fixDiv8() {
     var $menucontent = $('#main-menu-content');
-    if ($(window).scrollTop() > 405)
+    if ($(window).scrollTop() > 485)
         $menucontent.css({'display':'none'});
     else
         $menucontent.css({'display':'block'});
@@ -97,7 +97,7 @@ $(document).ready(function(){
 });
 
 function fixDiv9() {
-    if ($(window).scrollTop() > 405) {
+    if ($(window).scrollTop() > 485) {
         $("#main-menu-content").mouseenter(function () {
             $("#main-menu-content").show();
         });

@@ -55,7 +55,6 @@ class Home extends Layout {
 	
 	public function index()
 	{
-
 		/*
 		$this->load->library('user_agent');
 
@@ -72,35 +71,38 @@ class Home extends Layout {
 		    ECHO "DESKTIOP";
 		}
 		*/
-		
-
 		$getCateSearchs = $this->home_model->getCateSearch();
+
 		$getAllCategoryTree = $this->home_model->getAllCategoryTree();
+
 		$gallery = $this->utility_model->whereOneField('tbl_gallery','status', 1);
+
+
 		$padding = $this->home_model->getAllGallery();
+
 		$getAllBrand = $this->home_model->getAllBrand();
+
 		$getAllatHome = $this->athome_model->getAll();
+
+
+
 		$getPopup  = $this->home_model->getPopup();
-
-
         $gettopView  = $this->home_model->gettopView();
         $gettopnew  = $this->home_model->gettopnew();
         //var_dump($gettopView);
-
-		
-		
 		$configall = $this->config_model->getConfig();
+
 		$meta = array(
 			'title' => $configall->site_title, 
 			'description' => $configall->site_describe,
 			'keywords' => $configall->site_keyword,
 		);
-
-
         $getProductPromotion = $this->bigsale_model->getUti(5);
 
+        $agent = $_SERVER['HTTP_USER_AGENT'];
+        $addr = $_SERVER['REMOTE_ADDR'];
+        $getAllorder = $this->home_model->getAllorder($agent, $addr);
 
-		
 		$this->_data['main_content'] = $this->load->view('v3template/home_view', array(
 			'getCateSearchs' => $getCateSearchs,
 			'menus' => $getAllCategoryTree,
@@ -112,7 +114,8 @@ class Home extends Layout {
 			'getPopup' => $getPopup,
             'gettopViews' => $gettopView,
             'gettopnews' => $gettopnew,
-            'gettoptPromotions' => $getProductPromotion
+            'gettoptPromotions' => $getProductPromotion,
+            'getAllorders' => $getAllorder
 		), true);
 		$this->load->view('v3template/layout_view', $this->_data);
 	}
@@ -176,8 +179,10 @@ class Home extends Layout {
 		$getProdUsingCates = $this->products_model->getProdUsingCates($getCategDetail->catID,$config['per_page'] , $page);
 
 
+        //var_dump($getCategDetail->catID);
+
         // lay get sub menu # v4
-        $getCategory2level = $this->category_model->getCategory2level($getCategDetail->catID);
+        $getCategory2level = $this->category_model->getCategory2level($getCategDetail->catID, 0);
         $getSubMenus = $this->category_model->getSubMenu($getCategDetail->catID);
 
 

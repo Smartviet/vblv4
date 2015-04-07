@@ -1,4 +1,10 @@
 <section id="main-page">
+    <style>
+        .big-category .item:nth-child(3n+3){
+            margin-right: 0px !important;
+        }
+    </style>
+
     <aside id="filter">
         <div class="type-filter all-product">
             <h6 class="title-filter">Tất cả sản phẩm</h6>
@@ -113,7 +119,7 @@
                                 </script>
                             <?php } ?>
                             <?php foreach($getCategory2level['CatChild'] as $getCategory2levelCatChild ): ?>
-                                <li><a href="#"><?= $getCategory2levelCatChild['catName'] ?></a></li>
+                                <li><a href="<?= $getCategory2levelCatChild['keypage'] ?>"><?= $getCategory2levelCatChild['catName'] ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>

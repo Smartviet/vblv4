@@ -1,3 +1,24 @@
+<nav class="site-navigation page-navigation">
+    <ul class="menu">
+        <li><a href="#neo-1" class="neo"><img src="<?php echo base_url('assets/font-end');?>/css/images/menu-icon-category-1.png" alt="Tên tầng 1" title="Tên tầng 1"></a></li>
+        <li><a href="#neo-2" class="neo"><img src="<?php echo base_url('assets/font-end');?>/css/images/menu-icon-category-2.png" alt="Tên tầng 2" title="Tên tầng 2"></a></li>
+        <li><a href="#neo-3" class="neo"><img src="<?php echo base_url('assets/font-end');?>/css/images/menu-icon-category-3.png" alt="Tên tầng 3" title="Tên tầng 3"></a></li>
+        <li><a href="#neo-4" class="neo"><img src="<?php echo base_url('assets/font-end');?>/css/images/menu-icon-category-4.png" alt="Tên tầng 4" title="Tên tầng 4"></a></li>
+        <li><a href="#neo-5" class="neo"><img src="<?php echo base_url('assets/font-end');?>/css/images/menu-icon-category-5.png" alt="Tên tầng 5" title="Tên tầng 5"></a></li>
+        <li><a href="#neo-6" class="neo"><img src="<?php echo base_url('assets/font-end');?>/css/images/menu-icon-category-6.png" alt="Tên tầng 6" title="Tên tầng 6"></a></li>
+    </ul>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+
+            // Hook up the current state to the nav bar
+            $('.page-navigation').onePageNav();
+
+        });
+    </script>
+</nav>
+<script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/owl.carousel.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/font-end');?>/css/latest-view.css">
 <!-- Quan ly popup -->
 <?php if($getPopup) { ?> 
 <div class="cookie-popup-wrap" style="display: none">
@@ -312,8 +333,11 @@ $json_decode_imgurlbrands = json_decode($getAllatHome['imgurlbrand']);
 $json_decode_namelinks = json_decode($getAllatHome['namelink']);
 $json_decode_adslinks = json_decode($getAllatHome['adslink']);
 $json_decode_titlenameimglinks = json_decode($getAllatHome['titlenameimglink']);
+
+$json_decode_navlinks = json_decode($getAllatHome['navlinks']);
 ?>
 <section class="category" id="category-<?= $cate ?>">
+    <div id="neo-<?= $cate ?>" class="cneo"></div>
     <div class="taskbar">
         <div class="icon">
             <div class="icon-inner">
@@ -322,17 +346,17 @@ $json_decode_titlenameimglinks = json_decode($getAllatHome['titlenameimglink']);
         </div>
 
         <div class="floors">
-            <span>f1</span>
+            <span>f<?= $cate ?></span>
         </div>
 
 
         <div class="category-name">
-            <h2><a href="#"><?php echo $getAllatHome['name']; ?></a></h2>
+            <h2><a href="<?= $getAllatHome['namekeyhome'][0]['keypage'] ?>.html"><?php echo $getAllatHome['name']; ?></a></h2>
         </div>
 
 
         <div class="taskbar-menu">
-            <a class="view-more" href="#">Xem thêm</a>
+            <a class="view-more" href="<?= $getAllatHome['namekeyhome'][0]['keypage'] ?>.html">Xem thêm</a>
             <ul>
                 <?php  foreach($getAllatHome['connectmenu'] as $connectmenu01 ): ?>
                 <li><a href="<?= $connectmenu01['keypage'] ?>"><?= $connectmenu01['catName'] ?></a>
@@ -391,9 +415,11 @@ $json_decode_titlenameimglinks = json_decode($getAllatHome['titlenameimglink']);
 
         <div class="filter">
             <div class="title"><span>Tìm kiếm theo:&nbsp;</span></div>
-            <a href="#"><i class="fa">&nbsp;</i>Đang khuyến mãi</a>
-            <a href="#"><i class="fa">&nbsp;</i>Mới nhất</a>
-            <a href="#"><i class="fa">&nbsp;</i>Xem nhiều nhất</a>
+            <?php if(isset($json_decode_navlinks)): ?>
+            <?php foreach($json_decode_navlinks as $key=>$json_decode_navlink): ?>
+            <a href="<?= $json_decode_navlink->navlinks ?>"><i class="fa">&nbsp;</i><?= $json_decode_navlink->navlinks1 ?></a>
+            <?php endforeach ?>
+            <?php endif; ?>
         </div>
 
         <div style="clear: both"></div>
@@ -401,29 +427,70 @@ $json_decode_titlenameimglinks = json_decode($getAllatHome['titlenameimglink']);
 </section><!--End Category-->
 <?php $cate++; endforeach; ?>
 
+    <?php if($getAllorders){?>
+        <div class="latest-view-home">
+            <div class="task-latest-view">
+                <h4 class="title">Sản phẩm vừa xem</h4>
+            </div>
+            <div id="owl-demo" class="owl-carousel">
+                <?php foreach ($getAllorders as $getAllorder): ?>
+                    <div class="product-item item">
+                        <div class="img-product-item">
+                            <a href="<?php echo base_url($getAllorder['seo_name']); ?>.html">
+                                <img src="<?php echo base_url($getAllorder['productImage']); ?>" alt="Tên sản phẩm" title="Tên sản phẩm"></a>
+                        </div>
+                        <h2 class="product-name"><a href="<?php echo base_url($getAllorder['seo_name']); ?>.html"><?php echo  word_limiter($getAllorder['productName'], 6,'...'); ?></a></h2>
+                        <div class="product-price">
+                            <?php if($getAllorder['giamgia'] == "" || $getAllorder['giamgia'] == null || $getAllorder['giamgia'] == 0){ ?>
+                                <div class="new-price"><?= Utility_model::price_format($getAllorder['gia']); ?>  vnđ</div>
+                            <?php }else { ?>
+                                <span class="new-price"><?= Utility_model::price_format($getAllorder['giagiam']); ?> vnđ</span>
+                                <br>
+                                <span class="old-price"><?= Utility_model::price_format($getAllorder['gia']); ?> vnđ</span>
+                            <?php } ?>
+                        </div>
+                        <div class="button-buy">
+                            <input type="button" class="buy-now" id="open_popup" name="open_popup" rel="miendatwebPopup" href="#popup_content" value="Mua ngay" onclick="mua(<?= $getAllorder['productID']; ?>,<?php  if($getAllorder['giamgia'] == "" || $getAllorder['giamgia'] == null || $getAllorder['giamgia'] == 0){ echo $getAllorder['gia']; }else{ echo $getAllorder['giagiam']; } ?>, '<?= $getAllorder['productName']; ?>' )"/>
+                        </div>
+                        <?php if($getAllorder['giamgia'] == "" || $getAllorder['giamgia'] == null || $getAllorder['giamgia'] == 0){ ?>
+                        <?php }else { ?>
+                            <div class="product-mask">
+                                <span>-<?= $getAllorder['giamgia'] ?>%</span>
+                            </div>
+                        <?php } ?>
+                    </div><!--End Product Item-->
+                <?php endforeach;?>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+        <!--End Latest View-->
+    <?php }?>
+
+
+<!--
 <section id="provider">
     <div id="advertise-left">
         <?php foreach($paddings as $padding): if($padding['type'] == 2){ ?>
             <a href="<?php echo $padding['url'];?>"><img src="<?php echo base_url($padding['image']);?>" width="218" height="328" alt="Quảng cáo bên trái"></a>
         <?php } endforeach;?>
     </div>
-    <!--End Advertise Left-->
 
     <div id="logo-provider">
         <?php foreach ($getAllBrand as $getAllBrands){ ?>
             <a href="<?php echo base_url('search/thuonghieu/'.$getAllBrands['catID'],'.html')?>"><img src="<?php echo base_url($getAllBrands['catImage']);?>" alt="<?php echo base_url($getAllBrands['catName']);?>"></a>
         <?php }?>
 
-    </div><!--End Logo Provider-->
+    </div>
 
     <div id="advertise-right">
         <?php foreach($paddings as $padding): if($padding['type'] == 3){ ?>
             <a href="<?php echo $padding['url'];?>"><img src="<?php echo base_url($padding['image']);?>" width="218" height="328" alt="Quảng cáo bên trái"></a>
         <?php } endforeach;?>
-    </div><!--End Advertise Right-->
+    </div>
 
     <div style="clear: both"></div>
-</section><!--End Provider-->
+</section>
+-->
 
 </div>
 <!-- END Main_content -->

@@ -33,7 +33,7 @@ class Category_model extends CI_Model
 
     public function getSubMenu($id)
     {
-        $sql = "SELECT catid, catName, parentID, catImage, keypage FROM tbl_categories WHERE parentID = $id AND athome=1 ORDER BY catid";
+        $sql = "SELECT catid, catName, parentID, catImage, keypage FROM tbl_categories WHERE parentID = $id AND `status`=1 ORDER BY catid";
         $query = $this->db->query($sql);
         $rows = $query->result_array();
         foreach ($rows as $key => $item) {
@@ -42,6 +42,7 @@ class Category_model extends CI_Model
             $return[] =  $item;
         }
         return $return;
+
     }
 
     public function get4products($id)

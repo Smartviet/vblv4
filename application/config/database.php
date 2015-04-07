@@ -55,19 +55,20 @@ $db['default']['hostname'] = '112.78.2.103';
 $db['default']['username'] = 'vua3ed5e_hungtk';
 $db['default']['password'] = '1q2w3e4r5t6y';
 $db['default']['database'] = 'vua3ed5e_sv';
+
+
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'vuaba_name';
+$db['default']['password'] = '75trungkinh@!@#E';
+$db['default']['database'] = 'vuabanle_vn_db';
 */
+
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
 $db['default']['database'] = 'vuabanle';
 
-/*
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'maydieuk_feng';
-$db['default']['password'] = 'hanhphuc16';
-$db['default']['database'] = 'maydieuk_feng';
-*/
 /*
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';

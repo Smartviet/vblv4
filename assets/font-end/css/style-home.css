@@ -40,8 +40,8 @@ header{
 }
 
 #logo img{
-    /*padding: 14px 0px 0px 0px;*/
-    padding: 0px 0px 0px 0px;
+    padding: 14px 0px 0px 0px;
+    box-sizing: content-box;
 }
 
 #search-box{
@@ -277,12 +277,11 @@ input.key-search{
 
 /* Policy */
 #policy{
-    width: 660px;
+    width: 677px;
     float: left;
     margin-left: 220px;
-    padding-top: 10px;
     padding-left: 20px;
-    height: 48px;
+    height: 57px;
     /*margin-top: 20px;*/
 }
 
@@ -432,6 +431,8 @@ input.key-search{
     float: left;
     margin-left: 220px;
     border: 1px #f4f4f4 solid;
+    height: 450px;
+    overflow: hidden;
 }
 
 #right-advertise-slider{
@@ -503,6 +504,7 @@ input.key-search{
     background: #fff;
     margin-top: 30px;
     overflow: hidden;
+    position: relative;
 }
 
 .category .taskbar{
@@ -722,6 +724,11 @@ input.key-search{
     width: 400px;
     height: 418px;
     overflow: hidden;
+}
+
+.category .left-function .main-images img{
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .category .left-function .logo-provider{
@@ -1098,7 +1105,7 @@ footer{
     margin-bottom: 10px;
     font-size: 13px;
     padding-left: 10px;
-    
+
 }
 
 #register-mail-form label.error{
@@ -1463,7 +1470,7 @@ footer{
     float: left;
     padding: 10px;
     position: relative;
-    height: 265px;
+    height: 270px;
     border: 1px #fff solid;
 }
 
@@ -1485,4 +1492,176 @@ footer{
     padding-left: 1px;
     background: url("images/icon-sale-price-1.png") center no-repeat;
     background-size: 42px 42px;
+}
+
+/*Page navigation*/
+nav.page-navigation {
+    position: fixed;
+    top:30%;
+    left:2%;
+    opacity: 0;
+    width: 40px;
+    text-align: center;
+}
+
+nav.page-navigation li {
+    width: 100%;
+    list-style: none;
+}
+nav.page-navigation a {
+    padding: 6px 0px;
+    width: 80%;
+    display: inline-block;
+}
+
+nav.page-navigation li a img{
+    opacity: 0.5;
+}
+
+nav.page-navigation li.current a img, nav.page-navigation li:hover a img{
+    opacity: 1;
+}
+
+.category .cneo{
+    position: absolute;
+    top: -85px;
+}
+
+.site-navigation {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+
+/*Advertise Top*/
+#ol-fr-banner-wrapper {
+    height: 60px;
+    -webkit-transition: height 300ms;
+    transition: height 300ms;
+    -moz-transition: height 300ms;
+    overflow: hidden;
+    font-size: 0;
+}
+
+.ol-fr-banner-inner {
+    width: 1190px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+.ol-fr-banner-inner img{
+    /*max-height: 60px;*/
+}
+
+.ol-fr-banner-inner .close-ol-fr-banner {
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    padding: 2px;
+    opacity: 0.5;
+    background-color: #fff;
+    border-radius: 2px;
+    -webkit-transition: opacity 200ms;
+    -moz-transition: opacity 200ms;
+    transition: opacity 200ms;
+}
+
+.ol-fr-banner-inner .close-ol-fr-banner:hover {
+    opacity: 0.8;
+}
+
+/*Top Navibar*/
+#top-navibar{
+    background: #f2f2f2;
+    height: 25px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#top-navibar-inner{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#top-navibar-inner .hotline{
+    font-family: arial, helvetica, sans serif;
+    color: #999;
+    line-height: 25px;
+    font-size: 12px;
+    background: url("images/icon-phone.png") left center no-repeat;
+    background-size: 17px 17px;
+    padding: 0px 0px 0px 25px;
+    width: 160px;
+    float: left;
+}
+
+#top-navibar-inner .social-button{
+    float: left;
+    height: 25px;
+    margin-left: 20px;
+    width: 300px;
+    line-height: 25px;
+}
+
+#top-navibar-inner .social-button .item{
+    float: left;
+    line-height: 25px;
+}
+
+/*suggest-keyword*/
+.suggest-keyword{
+    font-family: arial, helvetica, sans serif;
+    font-size: 11px;
+    position: relative;
+    top: 0px;
+}
+
+.suggest-keyword .title{
+    color: #ff6600;
+    font-weight: bold;
+}
+
+.suggest-keyword .key{
+    color: #777;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.suggest-keyword .key:hover{
+    text-decoration: underline;
+}
+
+/*big-sale*/
+.big-sale{
+    font-family: arial, helvetica, sans serif;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 19px;
+}
+
+.big-sale .item{
+    margin-right: 20px;
+    color: #505050;
+    text-decoration: none;
+}
+
+.big-sale .item:hover{
+    text-decoration: underline;
+}
+
+/*policy-small*/
+.policy-small{}
+
+.policy-small li{
+    float: left;
+    list-style: none;
+    margin-right: 20px;
+}
+
+.policy-small li a{
+    font-family: arial, helvetica, sans serif;
+    font-size: 12px;
+    color: #505050;
+    text-decoration: none;
 }

@@ -61,6 +61,23 @@ class Athome extends Ad_layout
  			}
  		}
  		$arrimgurlbrand = json_encode($arrimgurlbrand);
+
+
+        // navlinks
+        $navlinks = $this->input->post('navlinks');
+        $navlinks1 = $this->input->post('navlinks1');
+        if($this->input->post('navlinks') != ''){
+            $arrnavlinks = array();
+            $n=0;
+            foreach ($navlinks as $key => $value) {
+                $arrnavlinks[$n]['navlinks'] = @$navlinks[$key];
+                $arrnavlinks[$n]['navlinks1'] = @$navlinks1[$key];
+                $n=$n+1;
+            }
+        }
+        $arrnavlinks = json_encode($arrnavlinks);
+
+
  		
  		//namelink
  		$namelink = $this->input->post('namelink');
@@ -110,6 +127,7 @@ class Athome extends Ad_layout
 			'status' => $this->input->post('status'),
 			'created' => date('Y-m-d H:i:s'),
             'catidconnect' => $this->input->post('catidconnect'),
+            'navlinks' => $arrnavlinks
 		);
 	
 		if($this->input->post('updated') != ""){

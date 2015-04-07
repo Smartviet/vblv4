@@ -16,11 +16,10 @@ class Athome_model extends CI_Model
 
         foreach($row as $key => $item)
         {
-            $item['connectmenu'] = $this->getCategory2level($item['catidconnect'], 0);
+            $item['connectmenu'] = $this->getCategory2level($item['catidconnect'],  0);
+            $item['namekeyhome'] = $this->getCate($item['catidconnect']);
             $return[] = $item;
         }
-
-
 		if($query){
 			return $return;
 		}else {
@@ -28,11 +27,19 @@ class Athome_model extends CI_Model
 		}
 	}
 
-    public function getCategory2level($item = 0, $level = 0)
+    public function getCate($item=0)
+    {
+        $sql = "SELECT catid, catName, keypage FROM tbl_categories WHERE catid = $item";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+
+    public function getCategory2level($item=0, $level = 0)
     {
         $level++;
         $return = array();
-        $sql = "SELECT catid, catName, keypage FROM tbl_categories WHERE parentID = $item  ORDER BY catid LIMIT 4";
+        $sql = "SELECT catid, catName, keypage FROM tbl_categories WHERE parentID = $item ORDER BY catid LIMIT 4";
         $query = $this->db->query($sql);
 
 
@@ -45,6 +52,7 @@ class Athome_model extends CI_Model
         }
         return $return;
     }
+
 
 
     /**
@@ -225,6 +233,7 @@ class Athome_model extends CI_Model
 	 */
 	static public function staticCountCate($id)
 	{
+        /*
 		$sql = "SELECT catID,parentID FROM tbl_categories WHERE parentID = $id AND status = 1";
 		//echo $sql;
 		$query = $this->db->query($sql);
@@ -233,6 +242,7 @@ class Athome_model extends CI_Model
 		}else {
 			return FALSE;
 		}
+        */
 	}
 	
 	

@@ -17,21 +17,20 @@
 	<?php }?>
 
     <meta name="robots" content="noodp,index,follow" /><!-- Quy định cho robot (Giữ nguyên)-->
-    <meta name="author" content="Author Name, authoremail@domain.com" /><!-- Tác giả website -->
+    <meta name="author" content="vuabanle, vuabanle.vn" /><!-- Tác giả website -->
     <meta http-equiv="content-language" content="vi_VN" /><!-- Ngôn ngữ cho website -->
 
     <meta property="og:locale" content="vi_VN" /><!-- Địa phương -->
     <meta property="og:type" content="article" /><!-- Phân loại website (Thường là article) -->
     <meta property="og:url" content="http://ten-website.com/" /><!-- Địa chỉ chính của Website -->
     <meta property="og:site_name" content="Tên website" /><!-- Tên Website-->
-    <meta property="og:image" content="http://ten-website.com/images/logo.jpg" /><!-- Đường dẫn ảnh logo công ty-->
+    <meta property="og:image" contddnt="http://ten-website.com/images/logo.jpg" /><!-- Đường dẫn ảnh logo công ty-->
 
     <!-- **CSS - stylesheets** -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/font-end');?>/css/category.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/font-end');?>/css/main-slider.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/font-end');?>//css/main-menu.css">
-
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/font-end');?>/css/main-menu.css">
+
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/font-end');?>/css/filter-price.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/font-end');?>/css/popup.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/font-end');?>/css/popbox.css">
@@ -42,7 +41,7 @@
     <!-- **jQuery** -->
     <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/libs');?>/jquery-ui.js"></script>
-    
+
     <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/main-slider.js"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/brand-filter.js"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/filter-price.js"></script>
@@ -53,7 +52,12 @@
     <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/popup/maincookie.popup.js"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/popbox.js"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/popup-bottom.js"></script>
-    
+
+    <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/jquery.combinedScroll.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/fix-icon-menu-left.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/hide-advertise-top.js"></script>
+
+
     <script type='text/javascript' src='<?php echo base_url('assets/libs/jQuery_Validation/jquery.validate.js'); ?>'></script>
 	<script type='text/javascript' src='<?php echo base_url('assets/libs/jQuery_Validation/localization/messages_vi.js'); ?>'></script>
 	
@@ -255,7 +259,7 @@
 	            price: price,
 	            name: name,
 	            qty: quanlity,
-	            color: color,
+	            color: color
 	        },
 	        success: function (response) {
 	            getlist();
@@ -274,6 +278,36 @@
 </head>
 
 <body>
+
+<div id="top-navibar">
+    <div id="top-navibar-inner">
+        <div class="hotline"><span><span style="color: #ff6600;">Hotline:</span> 04.6329.7119</span></div>
+        <div class="social-button">
+
+            <div class="google-plus item">
+                <!-- Place this tag in your head or just before your close body tag. -->
+                <script src="https://apis.google.com/js/platform.js" async defer></script>
+                <!-- Place this tag where you want the +1 button to render. -->
+                <div class="g-plusone" data-size="small"></div>
+            </div>
+
+            <!--<div class="like-facebook item">-->
+            <!--<div id="fb-root"></div>-->
+            <!--<script>(function(d, s, id) {-->
+            <!--var js, fjs = d.getElementsByTagName(s)[0];-->
+            <!--if (d.getElementById(id)) return;-->
+            <!--js = d.createElement(s); js.id = id;-->
+            <!--js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=291699171034536&version=v2.3";-->
+            <!--fjs.parentNode.insertBefore(js, fjs);-->
+            <!--}(document, 'script', 'facebook-jssdk'));</script>-->
+
+            <!--<div class="fb-like" data-href="http://vuabanle.vn/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div><!--End Top Navibar-->
+
+
 <?php echo $config->code ?>
 
 
@@ -373,8 +407,8 @@ source: availableTags
 									minlength: 2,
 									remote: {
 										url: "<?php echo base_url('home/checkUser'); ?>",
-									 	type: "post",
-									},
+									 	type: "post"
+									}
 								},
 								l_password: {
 									required: true,
@@ -390,20 +424,20 @@ source: availableTags
 									          	{
 									            	return $('#subForm :input[name="l_username"]').val();
 									          	}
-										 	},
-									},
-								},
+										 	}
+									}
+								}
 							},
 							messages: {
 								l_username: {
 									required: "Không được để trống",
 									minlength: "Họ và tên phải nhiều hơn 4 kí tự",
-									email : "Email phải nhập đúng định dạng",
+									email : "Email phải nhập đúng định dạng"
 								},
 								l_password: {
 									required: "Không được để trống",
-									remote: "Mật khẩu không đúng nhập lại ",
-								},
+									remote: "Mật khẩu không đúng nhập lại "
+								}
 							},
 
 							 submitHandler : function(form) {
@@ -497,7 +531,7 @@ source: availableTags
         <div id="shopping-cart">
             <span class="title-login" href="#popup_content" rel="miendatwebPopup" name="open_popup" id="open_popup" class="buy-now">
             	<input type="button" value="Giỏ hàng" href="#popup_content" rel="miendatwebPopup" name="open_popup" id="open_popup" class="buy-now">
-            	</span>&emsp;<span class="number-cart">9</span><br>
+            	</span>&emsp;<span class="number-cart">0</span><br>
             <span class="meta-login">Sản phẩm</span>
         </div><!--End Shopping Cart-->
     </div><!--End Header Inner-->
@@ -506,7 +540,7 @@ source: availableTags
     <div id="top-inner">
         <nav id="main-menu">
             <div id="title-menu">
-                Danh mục sản phẩm
+                <h2>Danh mục sản phẩm</h2>
             </div>
             <ul id="main-menu-content">
             	<?php foreach ($menus as $menu):?>
@@ -573,6 +607,26 @@ source: availableTags
             </ul>
         </nav><!--End Main Menu-->
 
+        <div id="policy">
+            <div class="suggest-keyword">
+                <a class="title">Xu hướng tìm kiếm:</a>
+                    &nbsp;&nbsp;
+                <a class="key" href="#">máy lọc nước</a>
+                &nbsp;&nbsp;
+                <a class="key" href="#">nước hoa hồng</a>
+                &nbsp;&nbsp;
+                <a class="key" href="#">may bay dieu khien</a>
+                &nbsp;&nbsp;
+                <a class="key" href="#">con quay tosy</a>
+            </div>
+
+            <div class="big-sale">
+                <a class="item hot" href="#">Khuyến mại lớn tháng 4 <img src="http://static-v2.123mua.vn/default/images/icon_hot.gif"></a>
+                <a class="item daily" href="#">Giá sốc mỗi ngày</a>
+                <a class="item gift" href="#">Nhận quà tặng</a>
+            </div>
+        </div><!--End Policy-->
+        <!--
         <div id="policy">
             <div class="cskh">
                 <div>
@@ -803,6 +857,7 @@ source: availableTags
 <?php
 $addmail = $this->session->userdata('addMailSeccuess');  
 ?>
+<!--
 <?php if($addmail['checksection'] == false || $login['userName'] =! '') { ?>
 	<div class="slide-out-div">
         <a class="handle" href="#">Content</a>
@@ -821,8 +876,10 @@ $addmail = $this->session->userdata('addMailSeccuess');
             </form>
         </div>
     </div>
-    <!-- .slide-out-div -->	
+
 <?php }?>
+-->
+
 
     <!--End Popup Bottom -->
     <!-- 

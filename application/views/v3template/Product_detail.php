@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/font-end');?>/css/latest-view.css">
+
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/font-end');?>/css/zoom-product.css">
 <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/jquery-zoom-product.js"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/font-end');?>/js/owl.carousel.js"></script>
@@ -294,10 +294,18 @@
             <div class="tab_container">
 
                 <div id="tab3" class="tab_content">
-                    <h2 class="title-tab-content">Nhận xét của khách hàng về Ấm đun nước siêu tốc Omron HEM-7130</h2>
+                    <h2 class="title-tab-content">Nhận xét của khách hàng về <?php echo $productdetail->productName ?></h2>
 
                     <div class="tab-content-main">
-                        Nhận xét của khách hàng tại đây
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id)) return;
+                                js = d.createElement(s); js.id = id;
+                                js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=310929572442256&version=v2.0";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-comments" data-href="<?php echo base_url($this->uri->segment(1)) ;?>" data-width="900" data-numposts="5" data-colorscheme="light"></div>
                     </div>
                 </div><!-- #tab3 -->
 
